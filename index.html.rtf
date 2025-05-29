@@ -1,0 +1,948 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\froman\fcharset0 Times-Roman;}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue0;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c0;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28600\viewh18000\viewkind0
+\deftab720
+\pard\pardeftab720\sa240\partightenfactor0
+
+\f0\fs24 \cf0 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 <!DOCTYPE html>\
+<html lang="en">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>AIColLabs | Samen Innoveren, Samen Transformeren</title>\
+    <meta name="description" content="Samen Innoveren, Samen Transformeren - The innovation laboratory developing breakthrough AI collaboration strategies through expert partnerships.">\
+    \
+    <!-- Schema.org structured data -->\
+    <script type="application/ld+json">\
+    \{\
+      "@context": "https://schema.org",\
+      "@type": "ProfessionalService",\
+      "name": "AIColLabs",\
+      "founder": \{\
+        "@type": "Person",\
+        "name": "Elhem Guernina",\
+        "email": "elhem@aicolabs.org",\
+        "telephone": "065 498 1964"\
+      \},\
+      "address": \{\
+        "@type": "PostalAddress",\
+        "streetAddress": "Pontsteiger 176",\
+        "addressLocality": "Amsterdam",\
+        "postalCode": "1014 ZP",\
+        "addressCountry": "NL"\
+      \},\
+      "description": "Innovation laboratory specializing in AI collaboration strategies and expert partnership development for organizational transformation.",\
+      "serviceType": "AI Strategy Laboratory",\
+      "areaServed": ["Netherlands", "Europe", "International"],\
+      "url": "https://aicolabs.org"\
+    \}\
+    </script>\
+    \
+    <style>\
+        * \{\
+            margin: 0;\
+            padding: 0;\
+            box-sizing: border-box;\
+        \}\
+        \
+        :root \{\
+            --primary-color: #0d3b3b;\
+            --secondary-color: #1a5555;\
+            --accent-color: #f4b942;\
+            --accent-gold: #e6a635;\
+            --dark-teal: #0a2e2e;\
+            --forest-green: #1a4a4a;\
+            --text-dark: #1a202c;\
+            --text-light: #4a5568;\
+            --bg-light: #f7fafc;\
+            --white: #ffffff;\
+            --gradient: linear-gradient(135deg, #0d3b3b 0%, #1a5555 50%, #2d6a6a 100%);\
+            --gold-gradient: linear-gradient(135deg, #f4b942 0%, #e6a635 100%);\
+            --dark-gradient: linear-gradient(135deg, #0a2e2e 0%, #0d3b3b 50%, #1a4a4a 100%);\
+            --glow: 0 0 25px rgba(244, 185, 66, 0.3);\
+            --glow-teal: 0 0 25px rgba(13, 59, 59, 0.3);\
+        \}\
+        \
+        body \{\
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;\
+            line-height: 1.6;\
+            color: var(--text-dark);\
+            background: var(--white);\
+        \}\
+        \
+        .container \{\
+            max-width: 1200px;\
+            margin: 0 auto;\
+            padding: 0 20px;\
+        \}\
+        \
+        /* Header & Navigation */\
+        header \{\
+            background: rgba(255, 255, 255, 0.95);\
+            backdrop-filter: blur(10px);\
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);\
+            position: fixed;\
+            width: 100%;\
+            top: 0;\
+            z-index: 1000;\
+        \}\
+        \
+        nav \{\
+            display: flex;\
+            justify-content: space-between;\
+            align-items: center;\
+            padding: 1rem 0;\
+        \}\
+        \
+        .logo \{\
+            display: flex;\
+            align-items: center;\
+            gap: 1rem;\
+            font-size: 1.4rem;\
+            font-weight: 400;\
+            color: var(--primary-color);\
+            letter-spacing: 0.2em;\
+        \}\
+        \
+        .logo-icon \{\
+            width: 60px;\
+            height: 60px;\
+            position: relative;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+        \}\
+        \
+        .service-petal \{\
+            width: 20px;\
+            height: 20px;\
+            background: var(--gold-gradient);\
+            position: absolute;\
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);\
+            cursor: pointer;\
+            transition: all 0.3s ease;\
+            text-decoration: none;\
+        \}\
+        \
+        .service-petal:hover \{\
+            transform: scale(1.15);\
+            box-shadow: 0 0 20px rgba(244, 185, 66, 0.6);\
+        \}\
+        \
+        /* Three hexagons arranged in triangular formation like your logo */\
+        .service-petal.scan \{\
+            top: 8px;\
+            left: 50%;\
+            transform: translateX(-50%);\
+        \}\
+        \
+        .service-petal.dealmaker \{\
+            bottom: 8px;\
+            left: 8px;\
+        \}\
+        \
+        .service-petal.laboratory \{\
+            bottom: 8px;\
+            right: 8px;\
+        \}\
+        \
+        .logo-text \{\
+            display: flex;\
+            flex-direction: column;\
+            line-height: 1.1;\
+        \}\
+        \
+        .logo-main \{\
+            font-size: 1.4rem;\
+            font-weight: 700;\
+            letter-spacing: 0.15em;\
+            color: var(--accent-color);\
+        \}\
+        \
+        .logo-subtitle \{\
+            font-size: 0.65rem;\
+            font-weight: 400;\
+            letter-spacing: 0.3em;\
+            color: var(--primary-color);\
+            margin-top: 2px;\
+            text-transform: uppercase;\
+        \}\
+        \
+        /* Service tooltips */\
+        .service-petal::before \{\
+            content: attr(data-service);\
+            position: absolute;\
+            bottom: -35px;\
+            left: 50%;\
+            transform: translateX(-50%);\
+            background: var(--primary-color);\
+            color: var(--accent-color);\
+            padding: 4px 8px;\
+            border-radius: 4px;\
+            font-size: 10px;\
+            white-space: nowrap;\
+            opacity: 0;\
+            pointer-events: none;\
+            transition: opacity 0.3s;\
+            z-index: 1000;\
+            font-weight: 600;\
+        \}\
+        \
+        .service-petal:hover::before \{\
+            opacity: 1;\
+        \}\
+        \
+        .nav-links \{\
+            display: flex;\
+            list-style: none;\
+            gap: 2.5rem;\
+        \}\
+        \
+        .nav-links a \{\
+            text-decoration: none;\
+            color: var(--text-dark);\
+            font-weight: 600;\
+            font-size: 0.95rem;\
+            transition: all 0.3s;\
+            position: relative;\
+        \}\
+        \
+        .nav-links a:hover \{\
+            color: var(--accent-color);\
+        \}\
+        \
+        .nav-links a::after \{\
+            content: '';\
+            position: absolute;\
+            width: 0;\
+            height: 2px;\
+            bottom: -5px;\
+            left: 0;\
+            background: var(--gold-gradient);\
+            transition: width 0.3s;\
+        \}\
+        \
+        .nav-links a:hover::after \{\
+            width: 100%;\
+        \}\
+        \
+        .lang-switch \{\
+            display: flex;\
+            gap: 0.5rem;\
+        \}\
+        \
+        .lang-btn \{\
+            padding: 0.6rem 1.2rem;\
+            border: 2px solid var(--accent-color);\
+            background: transparent;\
+            color: var(--accent-color);\
+            cursor: pointer;\
+            border-radius: 25px;\
+            font-weight: 600;\
+            transition: all 0.3s;\
+        \}\
+        \
+        .lang-btn.active \{\
+            background: var(--gold-gradient);\
+            color: var(--white);\
+            border-color: transparent;\
+            box-shadow: var(--glow);\
+        \}\
+        \
+        /* Hero Section */\
+        .hero \{\
+            background: var(--dark-gradient);\
+            color: var(--white);\
+            padding: 140px 0 100px;\
+            text-align: center;\
+            position: relative;\
+            overflow: hidden;\
+        \}\
+        \
+        .hero::before \{\
+            content: '';\
+            position: absolute;\
+            top: 0;\
+            left: 0;\
+            right: 0;\
+            bottom: 0;\
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(244,185,66,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');\
+            opacity: 0.4;\
+        \}\
+        \
+        .hero-content \{\
+            position: relative;\
+            z-index: 2;\
+        \}\
+        \
+        .hero h1 \{\
+            font-size: 4rem;\
+            margin-bottom: 1.5rem;\
+            font-weight: 800;\
+            letter-spacing: -0.03em;\
+        \}\
+        \
+        .hero .tagline \{\
+            font-size: 1.5rem;\
+            margin-bottom: 1rem;\
+            opacity: 0.9;\
+            font-weight: 300;\
+        \}\
+        \
+        .hero p \{\
+            font-size: 1.2rem;\
+            margin-bottom: 3rem;\
+            opacity: 0.8;\
+            max-width: 600px;\
+            margin-left: auto;\
+            margin-right: auto;\
+        \}\
+        \
+        .cta-button \{\
+            display: inline-block;\
+            padding: 1.2rem 2.5rem;\
+            background: var(--gold-gradient);\
+            color: var(--white);\
+            text-decoration: none;\
+            border-radius: 50px;\
+            font-weight: 700;\
+            font-size: 1.1rem;\
+            transition: all 0.3s;\
+            box-shadow: var(--glow);\
+        \}\
+        \
+        .cta-button:hover \{\
+            transform: translateY(-3px);\
+            box-shadow: 0 15px 35px rgba(244, 185, 66, 0.4);\
+        \}\
+        \
+        /* Services Section */\
+        .services \{\
+            padding: 100px 0;\
+            background: var(--bg-light);\
+        \}\
+        \
+        .section-title \{\
+            text-align: center;\
+            font-size: 3rem;\
+            margin-bottom: 1rem;\
+            color: var(--primary-color);\
+            font-weight: 800;\
+        \}\
+        \
+        .section-subtitle \{\
+            text-align: center;\
+            font-size: 1.3rem;\
+            margin-bottom: 4rem;\
+            color: var(--text-light);\
+            max-width: 600px;\
+            margin-left: auto;\
+            margin-right: auto;\
+        \}\
+        \
+        .services-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));\
+            gap: 2.5rem;\
+        \}\
+        \
+        .service-card \{\
+            background: var(--white);\
+            padding: 2.5rem;\
+            border-radius: 20px;\
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);\
+            transition: all 0.3s;\
+            border: 1px solid rgba(244, 185, 66, 0.1);\
+        \}\
+        \
+        .service-card:hover \{\
+            transform: translateY(-8px);\
+            box-shadow: 0 20px 50px rgba(244, 185, 66, 0.15);\
+        \}\
+        \
+        .service-icon \{\
+            width: 100px;\
+            height: 100px;\
+            background: var(--gradient);\
+            border-radius: 20px;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            margin-bottom: 2rem;\
+            font-size: 2.5rem;\
+            color: var(--accent-color);\
+            box-shadow: var(--glow-teal);\
+        \}\
+        \
+        .service-card h3 \{\
+            font-size: 1.6rem;\
+            margin-bottom: 1.5rem;\
+            color: var(--primary-color);\
+            font-weight: 700;\
+        \}\
+        \
+        .service-card p \{\
+            color: var(--text-light);\
+            font-size: 1.05rem;\
+            line-height: 1.7;\
+        \}\
+        \
+        /* Service Detail Sections */\
+        .scan, .dealmaker, .laboratory \{\
+            padding: 100px 0;\
+            border-bottom: 1px solid rgba(244, 185, 66, 0.1);\
+        \}\
+        \
+        .scan \{\
+            background: linear-gradient(135deg, #f8fafc 0%, rgba(13, 59, 59, 0.03) 100%);\
+        \}\
+        \
+        .dealmaker \{\
+            background: var(--white);\
+        \}\
+        \
+        .laboratory \{\
+            background: linear-gradient(135deg, #f8fafc 0%, rgba(244, 185, 66, 0.03) 100%);\
+        \}\
+        \
+        .service-detail \{\
+            max-width: 800px;\
+            margin: 0 auto;\
+            text-align: center;\
+        \}\
+        \
+        .service-content \{\
+            background: var(--white);\
+            padding: 3rem;\
+            border-radius: 20px;\
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);\
+        \}\
+        \
+        .service-content .service-icon \{\
+            width: 100px;\
+            height: 100px;\
+            background: var(--gradient);\
+            border-radius: 20px;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            margin: 0 auto 2rem;\
+            font-size: 2.5rem;\
+            color: var(--accent-color);\
+            box-shadow: var(--glow-teal);\
+        \}\
+        \
+        .service-content h3 \{\
+            font-size: 1.8rem;\
+            margin-bottom: 1.5rem;\
+            color: var(--primary-color);\
+            font-weight: 700;\
+        \}\
+        \
+        .service-content p \{\
+            font-size: 1.1rem;\
+            color: var(--text-light);\
+            margin-bottom: 2rem;\
+            line-height: 1.7;\
+        \}\
+        \
+        .service-features \{\
+            list-style: none;\
+            margin: 2rem 0;\
+            text-align: left;\
+        \}\
+        \
+        .service-features li \{\
+            padding: 1rem 0;\
+            border-bottom: 1px solid #f1f5f9;\
+            display: flex;\
+            align-items: flex-start;\
+            gap: 1rem;\
+        \}\
+        \
+        .service-features li:last-child \{\
+            border-bottom: none;\
+        \}\
+        \
+        .service-features li::before \{\
+            content: '\uc0\u10003 ';\
+            color: var(--accent-color);\
+            font-weight: bold;\
+            font-size: 1.2rem;\
+            flex-shrink: 0;\
+        \}\
+        \
+        .service-price \{\
+            margin: 2rem 0;\
+            text-align: center;\
+        \}\
+        \
+        .service-price .price \{\
+            font-size: 3rem;\
+            font-weight: 800;\
+            color: var(--accent-color);\
+            display: block;\
+        \}\
+        \
+        .service-price .price-note \{\
+            color: var(--text-light);\
+            font-size: 0.9rem;\
+            margin-top: 0.5rem;\
+        \}\
+        \
+        .service-price .price-detail \{\
+            color: var(--text-light);\
+            font-size: 0.85rem;\
+            margin-top: 0.8rem;\
+            font-style: italic;\
+            display: block;\
+        \}\
+        \
+        .service-cta \{\
+            display: inline-block;\
+            padding: 1.2rem 2.5rem;\
+            background: var(--gold-gradient);\
+            color: var(--white);\
+            text-decoration: none;\
+            border-radius: 50px;\
+            font-weight: 700;\
+            font-size: 1.1rem;\
+            transition: all 0.3s;\
+            box-shadow: var(--glow);\
+            margin-top: 1rem;\
+        \}\
+        \
+        .service-cta:hover \{\
+            transform: translateY(-3px);\
+            box-shadow: 0 15px 35px rgba(244, 185, 66, 0.4);\
+        \}\
+        \
+        /* Projects Section */\
+        .projects \{\
+            padding: 100px 0;\
+            background: var(--white);\
+        \}\
+        \
+        .projects-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));\
+            gap: 3rem;\
+            margin-top: 4rem;\
+        \}\
+        \
+        .project-card \{\
+            background: var(--white);\
+            border-radius: 20px;\
+            overflow: hidden;\
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);\
+            transition: all 0.3s;\
+            border: 1px solid rgba(244, 185, 66, 0.1);\
+        \}\
+        \
+        .project-card:hover \{\
+            transform: translateY(-8px);\
+            box-shadow: 0 25px 60px rgba(244, 185, 66, 0.15);\
+        \}\
+        \
+        .project-header \{\
+            padding: 2rem;\
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);\
+            color: var(--white);\
+        \}\
+        \
+        .project-category \{\
+            font-size: 0.8rem;\
+            font-weight: 600;\
+            color: var(--accent-color);\
+            text-transform: uppercase;\
+            letter-spacing: 0.1em;\
+            margin-bottom: 0.5rem;\
+        \}\
+        \
+        .project-title \{\
+            font-size: 1.4rem;\
+            font-weight: 700;\
+            margin-bottom: 0.5rem;\
+        \}\
+        \
+        .project-client \{\
+            font-size: 0.9rem;\
+            opacity: 0.8;\
+        \}\
+        \
+        .project-content \{\
+            padding: 2rem;\
+        \}\
+        \
+        .project-description \{\
+            color: var(--text-light);\
+            margin-bottom: 2rem;\
+            line-height: 1.6;\
+        \}\
+        \
+        .project-outcomes \{\
+            margin-bottom: 2rem;\
+        \}\
+        \
+        .project-outcomes h4 \{\
+            font-size: 1rem;\
+            font-weight: 600;\
+            color: var(--primary-color);\
+            margin-bottom: 1rem;\
+        \}\
+        \
+        .outcome-list \{\
+            list-style: none;\
+        \}\
+        \
+        .outcome-list li \{\
+            padding: 0.5rem 0;\
+            display: flex;\
+            align-items: flex-start;\
+            gap: 0.8rem;\
+        \}\
+        \
+        .outcome-list li::before \{\
+            content: '\uc0\u8594 ';\
+            color: var(--accent-color);\
+            font-weight: bold;\
+            flex-shrink: 0;\
+        \}\
+        \
+        .project-tags \{\
+            display: flex;\
+            flex-wrap: wrap;\
+            gap: 0.5rem;\
+        \}\
+        \
+        .project-tag \{\
+            padding: 0.3rem 0.8rem;\
+            background: rgba(244, 185, 66, 0.1);\
+            color: var(--accent-color);\
+            border-radius: 15px;\
+            font-size: 0.8rem;\
+            font-weight: 500;\
+        \}\
+        \
+        /* About Section */\
+        .about \{\
+            padding: 100px 0;\
+        \}\
+        \
+        .about-content \{\
+            display: grid;\
+            grid-template-columns: 1fr 1fr;\
+            gap: 5rem;\
+            align-items: center;\
+        \}\
+        \
+        .about-text h2 \{\
+            font-size: 3rem;\
+            margin-bottom: 2rem;\
+            color: var(--primary-color);\
+            font-weight: 800;\
+        \}\
+        \
+        .about-text p \{\
+            font-size: 1.1rem;\
+            color: var(--text-light);\
+            margin-bottom: 2rem;\
+            line-height: 1.8;\
+        \}\
+        \
+        .about-image \{\
+            text-align: center;\
+        \}\
+        \
+        .about-image img \{\
+            max-width: 100%;\
+            border-radius: 20px;\
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);\
+        \}\
+        \
+        .expertise-grid \{\
+            display: grid;\
+            grid-template-columns: repeat(3, 1fr);\
+            gap: 1.5rem;\
+            margin: 3rem 0;\
+        \}\
+        \
+        .expertise-item \{\
+            padding: 1.5rem;\
+            background: linear-gradient(135deg, var(--bg-light) 0%, rgba(244, 185, 66, 0.05) 100%);\
+            border-radius: 15px;\
+            text-align: center;\
+            font-weight: 600;\
+            color: var(--primary-color);\
+            border: 1px solid rgba(244, 185, 66, 0.1);\
+            transition: all 0.3s;\
+        \}\
+        \
+        .expertise-item:hover \{\
+            background: var(--gradient);\
+            color: var(--accent-color);\
+            transform: translateY(-2px);\
+        \}\
+        \
+        /* Process Section */\
+        .process \{\
+            padding: 100px 0;\
+            background: var(--bg-light);\
+        \}\
+        \
+        .process-steps \{\
+            display: grid;\
+            grid-template-columns: repeat(3, 1fr);\
+            gap: 3rem;\
+            margin-top: 4rem;\
+        \}\
+        \
+        .step \{\
+            text-align: center;\
+            position: relative;\
+        \}\
+        \
+        .step-number \{\
+            width: 80px;\
+            height: 80px;\
+            background: var(--gradient);\
+            color: var(--accent-color);\
+            border-radius: 20px;\
+            display: flex;\
+            align-items: center;\
+            justify-content: center;\
+            font-size: 2rem;\
+            font-weight: 800;\
+            margin: 0 auto 2rem;\
+            box-shadow: var(--glow-teal);\
+        \}\
+        \
+        .step h3 \{\
+            font-size: 1.5rem;\
+            margin-bottom: 1.5rem;\
+            color: var(--primary-color);\
+            font-weight: 700;\
+        \}\
+        \
+        .step p \{\
+            color: var(--text-light);\
+            font-size: 1.05rem;\
+            line-height: 1.7;\
+        \}\
+        \
+        /* Contact Section */\
+        .contact \{\
+            padding: 100px 0;\
+            background: var(--primary-color);\
+            color: var(--white);\
+        \}\
+        \
+        .contact-content \{\
+            display: grid;\
+            grid-template-columns: 1fr 1fr;\
+            gap: 5rem;\
+        \}\
+        \
+        .contact-form \{\
+            background: var(--white);\
+            padding: 3rem;\
+            border-radius: 20px;\
+            color: var(--text-dark);\
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);\
+        \}\
+        \
+        .form-group \{\
+            margin-bottom: 2rem;\
+        \}\
+        \
+        .form-group label \{\
+            display: block;\
+            margin-bottom: 0.8rem;\
+            font-weight: 600;\
+            color: var(--primary-color);\
+        \}\
+        \
+        .form-group input,\
+        .form-group textarea \{\
+            width: 100%;\
+            padding: 1.2rem;\
+            border: 2px solid rgba(244, 185, 66, 0.1);\
+            border-radius: 10px;\
+            font-size: 1rem;\
+            transition: all 0.3s;\
+        \}\
+        \
+        .form-group input:focus,\
+        .form-group textarea:focus \{\
+            outline: none;\
+            border-color: var(--accent-color);\
+            box-shadow: var(--glow);\
+        \}\
+        \
+        .form-group textarea \{\
+            resize: vertical;\
+            height: 120px;\
+        \}\
+        \
+        .submit-btn \{\
+            background: var(--gold-gradient);\
+            color: var(--white);\
+            padding: 1.2rem 2.5rem;\
+            border: none;\
+            border-radius: 50px;\
+            cursor: pointer;\
+            font-size: 1.1rem;\
+            font-weight: 700;\
+            transition: all 0.3s;\
+            box-shadow: var(--glow);\
+        \}\
+        \
+        .submit-btn:hover \{\
+            transform: translateY(-2px);\
+            box-shadow: 0 15px 35px rgba(244, 185, 66, 0.4);\
+        \}\
+        \
+        .contact-info h3 \{\
+            font-size: 2.5rem;\
+            margin-bottom: 2rem;\
+            font-weight: 800;\
+        \}\
+        \
+        .contact-info p \{\
+            font-size: 1.2rem;\
+            margin-bottom: 3rem;\
+            opacity: 0.9;\
+            line-height: 1.7;\
+        \}\
+        \
+        .contact-item \{\
+            display: flex;\
+            align-items: center;\
+            margin-bottom: 2rem;\
+            font-size: 1.2rem;\
+        \}\
+        \
+        .contact-item span \{\
+            margin-right: 1.5rem;\
+            font-size: 1.5rem;\
+        \}\
+        \
+        .contact-item a \{\
+            color: var(--white);\
+            text-decoration: none;\
+        \}\
+        \
+        /* Footer */\
+        footer \{\
+            background: var(--text-dark);\
+            color: var(--white);\
+            text-align: center;\
+            padding: 3rem 0;\
+        \}\
+        \
+        footer p \{\
+            opacity: 0.8;\
+        \}\
+        \
+        /* Language Support */\
+        .lang-content \{\
+            display: none;\
+        \}\
+        \
+        .lang-content.active \{\
+            display: block;\
+        \}\
+        \
+        /* Responsive */\
+        @media (max-width: 768px) \{\
+            .nav-links \{\
+                display: none;\
+            \}\
+            \
+            .hero h1 \{\
+                font-size: 2.5rem;\
+            \}\
+            \
+            .hero .tagline \{\
+                font-size: 1.2rem;\
+            \}\
+            \
+            .about-content,\
+            .contact-content \{\
+                grid-template-columns: 1fr;\
+                gap: 3rem;\
+            \}\
+            \
+            .process-steps \{\
+                grid-template-columns: 1fr;\
+            \}\
+            \
+            .expertise-grid \{\
+                grid-template-columns: repeat(2, 1fr);\
+            \}\
+        \}\
+        \
+        /* Animations */\
+        @keyframes fadeInUp \{\
+            from \{\
+                opacity: 0;\
+                transform: translateY(50px);\
+            \}\
+            to \{\
+                opacity: 1;\
+                transform: translateY(0);\
+            \}\
+        \}\
+        \
+        .animate-on-scroll \{\
+            animation: fadeInUp 1s ease-out;\
+        \}\
+    </style>\
+</head>\
+<body>\
+    <header>\
+        <nav class="container">\
+            <div class="logo">\
+                <div class="logo-icon">\
+                    <a href="#scan" class="service-petal scan" data-service="AI Scan"></a>\
+                    <a href="#dealmaker" class="service-petal dealmaker" data-service="Deal Maker"></a>\
+                    <a href="#laboratory" class="service-petal laboratory" data-service="Laboratory"></a>\
+                </div>\
+                <div class="logo-text">\
+                    <div class="logo-main">AI COLLABS</div>\
+                    <div class="logo-subtitle">SAMEN INNOVEREN, SAMEN TRANSFORMEREN</div>\
+                </div>\
+            </div>\
+            <ul class="nav-links">\
+                <li><a href="#home" data-en="Home" data-nl="Home">Home</a></li>\
+                <li><a href="#scan" data-en="AI Scan" data-nl="AI Scan">AI Scan</a></li>\
+                <li><a href="#dealmaker" data-en="Deal Maker" data-nl="Deal Maker">Deal Maker</a></li>\
+                <li><a href="#laboratory" data-en="Laboratory" data-nl="Laboratorium">Laboratory</a></li>\
+                <li><a href="#projects" data-en="Projects" data-nl="Projecten">Projects</a></li>\
+                <li><a href="#contact" data-en="Connect" data-nl="Verbind">Connect</a></li>\
+            </ul>\
+            <div class="lang-switch">\
+                <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>\
+                <button class="lang-btn" onclick="switchLanguage('nl')">NL</button>\
+            </div>\
+        </nav>\
+    </header>\
+\
+    <main>\
+        <!-- English Content -->\
+        <div class="lang-content active" id="en-content">\
+            <section class="hero" id="home">\
+                <div class="container">\
+                    <div class="hero-content">\
+                        <h1>AIColLabs</h1>\
+                        <div class="tagline">Samen Innoveren, Samen Transformeren</div>\
+                        <p>The innovation laboratory developing breakthrough AI collaboration strategies. We analyze, architect, and accelerate your transformation through expert partnerships.</p>\
+                        <a href="#contact" class="cta-button">Launch Your AI Lab Project</a>\
+                    </div>\
+                </div>\
+            </section>\
+\
+            <section class="scan}
