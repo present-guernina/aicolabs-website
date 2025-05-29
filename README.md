@@ -1,2 +1,2 @@
-# aicolabs-website
+# aicollabs-website
 present 
