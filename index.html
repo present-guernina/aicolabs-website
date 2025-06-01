@@ -1,0 +1,1804 @@
+                <div class="industry-card" onclick="selectIndustry('finance')">
+                    <span class="industry-icon">💰</span>
+                    <h3>Finance / Insurance</h3>
+                    <p class="industry-description">Banken, verzekeringen, hypotheken, accounting</p>
+                    <p class="use-cases">Client onboarding, policy renewals, claims</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('beauty')">
+                    <span class="industry-icon">💄</span>
+                    <h3>Beauty / Wellness</h3>
+                    <p class="industry-description">Kappers, schoonheidssalons, spa, massage</p>
+                    <p class="use-cases">Afspraken, product upselling, loyalty rewards</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('legal')">
+                    <span class="industry-icon">⚖️</span>
+                    <h3>Legal / Advocaten</h3>
+                    <p class="industry-description">Advocatenkantoren, notarissen, juridisch advies</p>
+                    <p class="use-cases">Client intake, case updates, billing reminders</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('saas')">
+                    <span class="industry-icon">💻</span>
+                    <h3>SaaS / Tech</h3>
+                    <p class="industry-description">Software bedrijven, apps, IT-services</p>
+                    <p class="use-cases">User onboarding, churn prevention, upselling</p>
+                </div>
+            </div>
+            
+            <div class="custom-industry">
+                <h3>🔍 Zie Je Jouw Sector Niet?</h3>
+                <p>Geen probleem! Vertel ons wat je doet en we laten zien hoe AI jou helpt.</p>
+                <div class="custom-input">
+                    <input type="text" id="customIndustryInput" placeholder="Bijv: 'Ik run een webdesign bureau' of 'Wij verhuren evenementen materiaal'">
+                    <button onclick="handleCustomIndustry()">🚀 LAAT ZIEN</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Selected Industry Display -->
+    <section class="selected-industry-display" id="selectedIndustryDisplay">
+        <div class="container">
+            <button class="back-button" onclick="goBack()">← ANDERE INDUSTRIE KIEZEN</button>
+            
+            <div class="template-showcase" id="templateShowcase">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+            
+            <div class="cta-section">
+                <button class="btn-primary" onclick="startImplementation()">
+                    🚀 IMPLEMENTEER DIRECT (€197/MAAND)
+                </button>
+                <button class="btn-secondary" onclick="requestDemo()">
+                    📞 GRATIS DEMO CALL
+                </button>
+            </div>
+            
+            <div class="trust-indicators">
+                <strong>💰 Gemiddelde ROI: 300%+ binnen 30 dagen</strong> · ⚡ Setup: 2-4 uur · 🔄 Cancel anytime
+            </div>
+        </div>
+    </section>
+
+    <!-- Analysis Modal -->
+    <div id="analysisModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">🧠 AI ANALYSE LOOPT...</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Analysis content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Industry templates data met Order-to-Cash focus
+        const templates = {
+            restaurant: {
+                title: "Restaurant After-Sales Bot",
+                subtitle: "Order-to-Cash geoptimaliseerd: Van betaling → Review → Loyalty → Repeat Order",
+                businessModel: {
+                    current: "Per transactie model met lage repeat rate",
+                    optimized: "Transactie + Loyalty model met 40% hogere repeat rate"
+                },
+                problems: [
+                    "❌ Order-to-Cash stopt bij betaling - geen follow-up",
+                    "❌ Geen systematische customer lifetime value verhoging",
+                    "❌ Reviews komen reactief, niet proactief", 
+                    "❌ Loyalty programma wordt handmatig beheerd",
+                    "❌ Geen data-driven repeat purchase triggers"
+                ],
+                solutions: [
+                    "✅ Geautomatiseerde post-transaction engagement",
+                    "✅ Proactieve review generation voor social proof",
+                    "✅ AI-driven loyalty point allocation & redemption", 
+                    "✅ Predictive comeback timing gebaseerd op behavior",
+                    "✅ Customer lifetime value optimization loops"
+                ],
+                roi: "💰 Order-to-Cash verbetering: €400/maand besparing + €2000/maand extra repeat revenue = 400% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Dining Experience → Payment → AI Follow-up (2u) → Review Request → Loyalty Credits → Personalized Comeback Offer → Repeat Visit",
+                included: [
+                    "✅ Complete Order-to-Cash automation workflow",
+                    "✅ POS integration voor real-time transaction triggers",
+                    "✅ Customer lifetime value tracking & optimization", 
+                    "✅ Multi-channel engagement (WhatsApp/Email/SMS)",
+                    "✅ Review funnel naar Google/TripAdvisor/Facebook",
+                    "✅ Dynamic loyalty program met AI-driven rewards",
+                    "✅ Predictive analytics voor optimal timing",
+                    "✅ Revenue attribution & ROI dashboard"
+                ]
+            },
+            
+            consultancy: {
+                title: "Consultancy Lead Qualification Bot",
+                subtitle: "B2B Sales Cycle geoptimaliseerd: Van cold lead → qualified prospect → closed deal",
+                businessModel: {
+                    current: "Project-based met lage lead-to-close ratio",
+                    optimized: "Qualified pipeline met 3x hogere close rate"
+                },
+                problems: [
+                    "❌ Lead generation zonder kwalificatie - veel tijd verspild",
+                    "❌ Sales cycle te lang door poor lead intelligence",
+                    "❌ Geen systematische nurturing van warm prospects", 
+                    "❌ Budget/Authority/Need/Timeline (BANT) handmatig checken",
+                    "❌ Proposal fase zonder duidelijke business case"
+                ],
+                solutions: [
+                    "✅ AI-powered Business Model Canvas kwalificatie",
+                    "✅ Automatische BANT scoring en prioritering",
+                    "✅ Lead nurturing flows gebaseerd op buyer journey", 
+                    "✅ ROI calculator integration voor value selling",
+                    "✅ Predictive deal scoring en close probability"
+                ],
+                roi: "💰 Sales cycle verbetering: 15 uur/week besparing + 40% hogere close rate = 350% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Marketing Lead → AI Qualification → BANT Scoring → Nurturing Sequence → Sales Ready Lead → Discovery Call → Proposal → Close",
+                included: [
+                    "✅ Complete B2B sales cycle automation",
+                    "✅ Business Model Canvas chatbot questionnaire",
+                    "✅ BANT qualification scoring algoritme", 
+                    "✅ CRM integration met lead intelligence",
+                    "✅ Automated nurturing sequences per buyer persona",
+                    "✅ ROI calculator voor value-based selling",
+                    "✅ Sales pipeline analytics & forecasting",
+                    "✅ Deal velocity optimization toolkit"
+                ]
+            },
+
+            ecommerce: {
+                title: "E-commerce Cart Recovery & Upsell Bot",
+                subtitle: "E-commerce funnel geoptimaliseerd: Browse → Add to Cart → Purchase → Upsell → Loyalty",
+                businessModel: {
+                    current: "Single transaction focus met 70% cart abandonment",
+                    optimized: "Customer lifetime value model met 25% cart recovery"
+                },
+                problems: [
+                    "❌ 70% cart abandonment = massive revenue leakage",
+                    "❌ Geen post-purchase upselling & cross-selling",
+                    "❌ Customer lifetime value niet geoptimaliseerd", 
+                    "❌ Inventory urgency niet gebruikt voor conversie",
+                    "❌ Geen behavioral triggers voor repeat purchases"
+                ],
+                solutions: [
+                    "✅ Multi-channel cart abandonment recovery sequences",
+                    "✅ Dynamic pricing & discount optimization",
+                    "✅ Post-purchase upsell & cross-sell automation", 
+                    "✅ Inventory-based urgency & scarcity triggers",
+                    "✅ Customer lifetime value maximization flows"
+                ],
+                roi: "💰 E-commerce optimization: 25% cart recovery + 30% CLV increase = 500% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Product Browse → Add to Cart → AI Recovery (if abandoned) → Purchase → Thank You Upsell → Shipping Updates → Delivery → Review Request → Replenishment Reminder",
+                included: [
+                    "✅ Complete e-commerce funnel optimization",
+                    "✅ Platform integrations (Shopify/WooCommerce/Magento)",
+                    "✅ Multi-channel messaging (Email/SMS/WhatsApp/Push)", 
+                    "✅ Dynamic discount & pricing algorithms",
+                    "✅ Behavioral trigger automation",
+                    "✅ Customer lifetime value tracking",
+                    "✅ Revenue attribution & cohort analysis",
+                    "✅ A/B testing framework voor continuous optimization"
+                ]
+            },
+            
+            healthcare: {
+                title: "Healthcare Patient Journey Bot",
+                subtitle: "Service business geoptimaliseerd: Appointment → Care → Follow-up → Retention",
+                businessModel: {
+                    current: "Appointment-based met hoge no-show rate",
+                    optimized: "Patient lifetime value met 90% retention"
+                },
+                problems: [
+                    "❌ 20-30% no-show rate = revenue leakage",
+                    "❌ Geen systematische patient journey optimization",
+                    "❌ Post-care follow-up gebeurt handmatig of niet", 
+                    "❌ Patient satisfaction wordt niet proactief gemeten",
+                    "❌ Geen retention strategy voor recurring patients"
+                ],
+                solutions: [
+                    "✅ Predictive no-show prevention met timely reminders",
+                    "✅ Automated patient journey van booking tot recovery",
+                    "✅ Post-care satisfaction tracking & improvement loops", 
+                    "✅ Preventive care reminders voor patient retention",
+                    "✅ Referral program automation voor practice growth"
+                ],
+                roi: "💰 Practice optimization: 90% minder no-shows + 15u/week admin = 400% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Appointment Request → Confirmation → Reminder Sequence → Pre-visit Preparation → Care Delivery → Post-care Follow-up → Satisfaction Survey → Next Appointment Booking",
+                included: [
+                    "✅ Complete patient journey automation",
+                    "✅ Practice management software integration",
+                    "✅ Multi-channel appointment reminders & confirmations", 
+                    "✅ Pre-visit intake automation",
+                    "✅ Post-care follow-up & satisfaction tracking",
+                    "✅ GDPR-compliant patient data handling",
+                    "✅ Preventive care reminder scheduling",
+                    "✅ Practice growth analytics & patient lifetime value"
+                ]
+            },
+            
+            realestate: {
+                title: "Real Estate Sales Cycle Bot",
+                subtitle: "High-ticket sales geoptimaliseerd: Lead → Viewing → Offer → Close → Referral",
+                businessModel: {
+                    current: "Transaction-based met lage lead conversion",
+                    optimized: "Relationship-based met 40% meer closings"
+                },
+                problems: [
+                    "❌ Leads verdwijnen na eerste viewing zonder follow-up",
+                    "❌ Geen systematische buyer journey optimization",
+                    "❌ Market timing niet gebruikt voor urgency creation", 
+                    "❌ Post-close relationship management is handmatig",
+                    "❌ Referral generation gebeurt ad-hoc"
+                ],
+                solutions: [
+                    "✅ Automated buyer journey van lead tot close",
+                    "✅ Market intelligence voor timing & pricing optimization",
+                    "✅ Post-viewing follow-up met personalized property suggestions", 
+                    "✅ Mortgage guidance & financing support automation",
+                    "✅ Post-close relationship management voor referrals"
+                ],
+                roi: "💰 Sales cycle optimization: 40% meer viewings + 25% hogere close rate = 350% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Lead Generation → Qualification → Property Matching → Viewing → Follow-up → Offer Negotiation → Close → Post-close Service → Referral Generation",
+                included: [
+                    "✅ Complete real estate sales cycle automation",
+                    "✅ CRM integration met buyer journey tracking",
+                    "✅ Property matching algoritme met buyer preferences", 
+                    "✅ Market data integration voor pricing intelligence",
+                    "✅ Mortgage calculator & financing guidance",
+                    "✅ Automated viewing follow-up sequences",
+                    "✅ Post-close relationship management",
+                    "✅ Referral program automation & tracking"
+                ]
+            },
+            
+            fitness: {
+                title: "Fitness Member Lifecycle Bot",
+                subtitle: "Subscription model geoptimaliseerd: Acquire → Engage → Retain → Expand",
+                businessModel: {
+                    current: "Membership-based met hoge churn rate",
+                    optimized: "Community-driven met 35% hogere retention"
+                },
+                problems: [
+                    "❌ Nieuwe leden stoppen binnen 3 maanden (typical churn)",
+                    "❌ Geen predictive churn prevention strategy",
+                    "❌ Member engagement wordt niet systematisch gemeten", 
+                    "❌ Upselling naar personal training gebeurt reactief",
+                    "❌ Community building is niet geautomatiseerd"
+                ],
+                solutions: [
+                    "✅ Predictive churn modeling met proactive intervention",
+                    "✅ Automated member onboarding & goal setting",
+                    "✅ Engagement tracking met personalized motivation", 
+                    "✅ Smart upselling naar premium services",
+                    "✅ Community building & social motivation automation"
+                ],
+                roi: "💰 Member lifecycle optimization: 35% retention + 25% upsell rate = 400% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Lead → Trial → Membership → Onboarding → Engagement Tracking → Retention Interventions → Upsell Opportunities → Community Advocacy",
+                included: [
+                    "✅ Complete member lifecycle automation",
+                    "✅ Gym management software integration",
+                    "✅ Predictive churn modeling & prevention", 
+                    "✅ Personalized workout & nutrition guidance",
+                    "✅ Progress tracking & celebration automation",
+                    "✅ Smart upselling naar personal training/nutrition",
+                    "✅ Community engagement & social features",
+                    "✅ Member lifetime value optimization"
+                ]
+            },
+
+            // Additional industries
+            education: {
+                title: "Education Student Engagement Bot",
+                subtitle: "Learning journey geoptimaliseerd: Enroll → Engage → Complete → Advocate",
+                businessModel: {
+                    current: "Course-based met lage completion rates",
+                    optimized: "Student success model met 60% completion"
+                },
+                problems: [
+                    "❌ Lage course completion rates (meestal <30%)",
+                    "❌ Students verdwijnen zonder feedback waarom",
+                    "❌ Handmatige progress tracking en reminders", 
+                    "❌ Geen personalized learning path recommendations",
+                    "❌ Student support is reactief, niet proactief"
+                ],
+                solutions: [
+                    "✅ Progress tracking met proactive intervention alerts",
+                    "✅ Personalized study reminders gebaseerd op learning style",
+                    "✅ Automated assignment reminders en deadline management", 
+                    "✅ Instant Q&A support voor common course questions",
+                    "✅ Graduation pathway recommendations en career guidance"
+                ],
+                roi: "💰 Education optimization: 60% completion rate + 20u/week admin = 400% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Course Enrollment → Onboarding → Progress Tracking → Engagement Interventions → Assignment Support → Completion → Certification → Alumni Network",
+                included: [
+                    "✅ Complete student lifecycle automation",
+                    "✅ LMS integration (Moodle, Canvas, etc.)",
+                    "✅ Predictive dropout prevention", 
+                    "✅ Personalized learning path optimization",
+                    "✅ Automated progress tracking & reporting",
+                    "✅ Student support chatbot with escalation",
+                    "✅ Certificate & badge automation",
+                    "✅ Alumni engagement & referral programs"
+                ]
+            },
+
+            automotive: {
+                title: "Automotive Service & Sales Bot",
+                subtitle: "Customer lifecycle geoptimaliseerd: Sale → Service → Retention → Referral",
+                businessModel: {
+                    current: "Transaction-based met lage service retention",
+                    optimized: "Lifecycle value met 50% hogere service revenue"
+                },
+                problems: [
+                    "❌ Klanten vergeten service afspraken",
+                    "❌ Geen proactive maintenance communication",
+                    "❌ Lage repeat purchase rates voor nieuwe voertuigen", 
+                    "❌ Service upselling gebeurt alleen tijdens bezoek",
+                    "❌ Geen systematische customer satisfaction tracking"
+                ],
+                solutions: [
+                    "✅ Automated service reminder scheduling",
+                    "✅ Proactive maintenance alerts gebaseerd op mileage/tijd",
+                    "✅ Trade-in value tracking & upgrade notifications", 
+                    "✅ Service upselling optimization tijdens booking",
+                    "✅ Post-service satisfaction & retention campaigns"
+                ],
+                roi: "💰 Automotive optimization: 50% service retention + 30% upsell = 350% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Vehicle Sale → Service Onboarding → Maintenance Reminders → Service Booking → Upsell Opportunities → Satisfaction Tracking → Trade-in Alerts → Referral Generation",
+                included: [
+                    "✅ Complete automotive customer lifecycle",
+                    "✅ DMS integration (Dealer Management System)",
+                    "✅ Maintenance scheduling automation", 
+                    "✅ Trade-in value tracking & notifications",
+                    "✅ Service upselling optimization",
+                    "✅ Customer satisfaction surveys",
+                    "✅ Referral program automation",
+                    "✅ Warranty & recall notification system"
+                ]
+            },
+
+            finance: {
+                title: "Finance Client Onboarding Bot",
+                subtitle: "Client journey geoptimaliseerd: Lead → Onboard → Service → Retain",
+                businessModel: {
+                    current: "Manual onboarding met hoge drop-off rates",
+                    optimized: "Automated journey met 80% completion"
+                },
+                problems: [
+                    "❌ Complex onboarding schrikt klanten af",
+                    "❌ Compliance documentatie is tijdrovend",
+                    "❌ Geen proactive policy/portfolio reviews", 
+                    "❌ Claim processes zijn onduidelijk voor klanten",
+                    "❌ Cross-selling gebeurt reactief"
+                ],
+                solutions: [
+                    "✅ Step-by-step onboarding with progress tracking",
+                    "✅ Automated compliance document collection",
+                    "✅ Proactive portfolio review scheduling", 
+                    "✅ Claims guidance & status tracking",
+                    "✅ Smart cross-selling based on life events"
+                ],
+                roi: "💰 Finance optimization: 80% onboarding completion + 25% cross-sell = 400% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Lead Qualification → Onboarding Journey → Document Collection → Account Setup → Service Delivery → Portfolio Reviews → Cross-sell Opportunities → Retention",
+                included: [
+                    "✅ Complete client onboarding automation",
+                    "✅ CRM & portfolio management integration",
+                    "✅ Compliance document automation", 
+                    "✅ Claims processing guidance",
+                    "✅ Portfolio review scheduling",
+                    "✅ Life event trigger cross-selling",
+                    "✅ Regulatory compliance tracking",
+                    "✅ Client satisfaction & retention analytics"
+                ]
+            },
+
+            beauty: {
+                title: "Beauty & Wellness Booking Bot",
+                subtitle: "Client experience geoptimaliseerd: Book → Serve → Follow-up → Retain",
+                businessModel: {
+                    current: "Appointment-based met lage retention",
+                    optimized: "Experience-driven met 60% repeat bookings"
+                },
+                problems: [
+                    "❌ Veel no-shows en last-minute cancellations",
+                    "❌ Geen systematische aftercare communication",
+                    "❌ Product upselling alleen tijdens appointment", 
+                    "❌ Seasonal booking patterns niet geoptimaliseerd",
+                    "❌ Client preferences worden niet bijgehouden"
+                ],
+                solutions: [
+                    "✅ Smart booking optimization met no-show prediction",
+                    "✅ Automated aftercare instructions per treatment",
+                    "✅ Product recommendation based on service history", 
+                    "✅ Seasonal campaign automation",
+                    "✅ Client preference tracking & personalization"
+                ],
+                roi: "💰 Beauty optimization: 60% repeat rate + 40% product sales = 350% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Service Booking → Pre-visit Preparation → Service Delivery → Aftercare Instructions → Product Recommendations → Satisfaction Follow-up → Rebooking Automation",
+                included: [
+                    "✅ Complete beauty salon automation",
+                    "✅ Booking system integration",
+                    "✅ Treatment aftercare automation", 
+                    "✅ Product recommendation engine",
+                    "✅ Client preference tracking",
+                    "✅ Seasonal marketing automation",
+                    "✅ Loyalty program integration",
+                    "✅ Staff scheduling optimization"
+                ]
+            },
+
+            legal: {
+                title: "Legal Client Management Bot",
+                subtitle: "Case journey geoptimaliseerd: Intake → Case → Updates → Billing",
+                businessModel: {
+                    current: "Billable hours met veel admin overhead",
+                    optimized: "Efficient case management met 30% meer billable time"
+                },
+                problems: [
+                    "❌ Client intake is tijdrovend en inconsistent",
+                    "❌ Case updates gebeuren handmatig",
+                    "❌ Billing explanations leiden tot veel vragen", 
+                    "❌ Document collection van clients is chaotisch",
+                    "❌ No-show rates voor consultations zijn hoog"
+                ],
+                solutions: [
+                    "✅ Automated client intake with legal questionnaires",
+                    "✅ Proactive case status updates to clients",
+                    "✅ Detailed billing explanations with time tracking", 
+                    "✅ Secure document collection portal",
+                    "✅ Consultation reminder & rescheduling automation"
+                ],
+                roi: "💰 Legal optimization: 30% meer billable time + 50% admin reduction = 400% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Client Intake → Case Assessment → Document Collection → Case Progress → Client Updates → Billing Transparency → Case Closure → Referral Requests",
+                included: [
+                    "✅ Complete legal case management",
+                    "✅ Practice management software integration",
+                    "✅ Client intake automation", 
+                    "✅ Secure document portal",
+                    "✅ Case status tracking & updates",
+                    "✅ Billing transparency automation",
+                    "✅ Consultation scheduling optimization",
+                    "✅ Client satisfaction & referral tracking"
+                ]
+            },
+
+            saas: {
+                title: "SaaS User Lifecycle Bot",
+                subtitle: "User journey geoptimaliseerd: Trial → Onboard → Engage → Expand",
+                businessModel: {
+                    current: "Feature-driven met hoge churn",
+                    optimized: "Value-driven met 40% hogere retention"
+                },
+                problems: [
+                    "❌ Lage trial-to-paid conversion rates",
+                    "❌ Users ontdekken key features niet tijdens onboarding",
+                    "❌ Churn prediction gebeurt te laat", 
+                    "❌ Upselling is niet gebaseerd op usage data",
+                    "❌ Support tickets herhalen dezelfde vragen"
+                ],
+                solutions: [
+                    "✅ Behavior-driven onboarding sequences",
+                    "✅ Feature discovery automation based on user goals",
+                    "✅ Proactive churn prevention with engagement scoring", 
+                    "✅ Usage-based upselling automation",
+                    "✅ Self-service knowledge base with smart routing"
+                ],
+                roi: "💰 SaaS optimization: 40% churn reduction + 60% upsell conversion = 500% ROI",
+                orderToCash: "🔄 <strong>Jouw verbeterde cyclus:</strong> Trial Signup → Goal-based Onboarding → Feature Discovery → Value Realization → Usage Optimization → Expansion Opportunities → Advocacy",
+                included: [
+                    "✅ Complete SaaS user lifecycle automation",
+                    "✅ Product analytics integration",
+                    "✅ Behavioral onboarding sequences", 
+                    "✅ Churn prediction & prevention",
+                    "✅ Usage-based expansion recommendations",
+                    "✅ Self-service support automation",
+                    "✅ Customer health scoring",
+                    "✅ Referral & advocacy program automation"
+                ]
+            }
+        };
+
+        let selectedTemplate = null;
+        let currentStep = 1;
+
+        function selectIndustry(industry) {
+            // Visual feedback
+            document.querySelectorAll('.industry-card').forEach(option => {
+                option.classList.remove('selected');
+            });
+            event.target.closest('.industry-card').classList.add('selected');
+            
+            selectedTemplate = industry;
+            
+            // Start "analysis" animation
+            showAnalysisProgress(industry);
+        }
+
+        function showAnalysisProgress(industry) {
+            // Show analysis screen
+            const analysisModal = document.getElementById('analysisModal');
+            analysisModal.style.display = 'flex';
+            
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div style="text-align: center; padding: 40px;">
+                    <div style="background: ${needsCall ? 'rgba(220, 38, 38, 0.1)' : 'rgba(5, 150, 105, 0.1)'}; padding: 30px; border-radius: 16px; margin: 30px 0;">
+                        <div style="font-size: 4rem; font-weight: 800; color: ${needsCall ? '#dc2626' : '#059669'}; margin-bottom: 15px;">
+                            ${complexityScore}%
+                        </div>
+                        <h3 style="color: var(--primary-blue); margin-bottom: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em;">
+                            ${needsCall ? '🔥 HOGE COMPLEXITEIT GEDETECTEERD' : '✅ STANDAARD COMPLEXITEIT'}
+                        </h3>
+                        <p style="color: var(--accent-steel); line-height: 1.6; font-weight: 500;">
+                            ${needsCall ? 
+                                'Jouw business model heeft unieke uitdagingen. We raden een persoonlijk gesprek aan om de beste AI strategie te bepalen.' :
+                                'Jouw business model past perfect bij onze standaard AI templates. Direct implementeerbaar!'
+                            }
+                        </p>
+                    </div>
+                    
+                    <div style="background: rgba(26, 35, 126, 0.05); padding: 25px; border-radius: 16px; margin: 30px 0;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em;">🎯 GEDETECTEERDE OPTIMALISATIE KANSEN:</h4>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.95rem; text-align: left;">
+                            ${getOptimizationOpportunities(industry).map(opp => 
+                                `<div style="font-weight: 600;">✅ ${opp}</div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: ${needsCall ? '2fr 1fr' : '1fr 2fr'}; gap: 20px; margin-top: 40px;">
+                        ${needsCall ? `
+                            <button onclick="scheduleCall('${industry}', ${complexityScore})" style="padding: 20px; background: var(--gradient-blue); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.02em; box-shadow: 0 6px 16px rgba(26, 35, 126, 0.3);">
+                                📞 PLAN STRATEGIEGESPREK (AANBEVOLEN)
+                            </button>
+                            <button onclick="continueWithTemplate('${industry}')" style="padding: 20px; background: var(--gradient-steel); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.02em;">
+                                📋 TEMPLATE BEKIJKEN
+                            </button>
+                        ` : `
+                            <button onclick="continueWithTemplate('${industry}')" style="padding: 20px; background: var(--gradient-blue); color: white; border: none; border-radius: 8px; font-weight: 700; font-size: 1.1rem; cursor: pointer; text-transform: uppercase; letter-spacing: 0.02em; box-shadow: 0 6px 16px rgba(26, 35, 126, 0.3);">
+                                🚀 DIRECT IMPLEMENTEREN
+                            </button>
+                            <button onclick="scheduleCall('${industry}', ${complexityScore})" style="padding: 20px; background: var(--gradient-steel); color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; text-transform: uppercase; letter-spacing: 0.02em;">
+                                📞 TOCH EERST OVERLEG
+                            </button>
+                        `}
+                    </div>
+                    
+                    <div style="margin-top: 30px; font-size: 0.9rem; color: var(--text-light); font-weight: 500; text-transform: uppercase; letter-spacing: 0.02em;">
+                        🔍 ANALYSE GEBASEERD OP 30 JAAR BUSINESS EXPERTISE + REAL-TIME MARKT DATA
+                    </div>
+                </div>
+            `;
+        }
+
+        function getOptimizationOpportunities(industry) {
+            const opportunities = {
+                restaurant: [
+                    "Review conversion +40%",
+                    "Repeat customer rate +35%", 
+                    "Staff tijd besparing 15u/week",
+                    "Customer satisfaction tracking"
+                ],
+                consultancy: [
+                    "Lead qualification efficiency +60%",
+                    "Sales cycle verkorting 25%",
+                    "Proposal win rate +40%", 
+                    "Pipeline predictability +80%"
+                ],
+                ecommerce: [
+                    "Cart abandonment recovery +25%",
+                    "Customer lifetime value +30%",
+                    "Inventory urgency conversion +20%",
+                    "Cross-sell automation +45%"
+                ],
+                healthcare: [
+                    "No-show reductie 90%",
+                    "Patient satisfaction +50%",
+                    "Admin tijd besparing 20u/week",
+                    "Compliance automation 100%"
+                ],
+                realestate: [
+                    "Lead-to-viewing conversion +40%",
+                    "Post-viewing follow-up 100%",
+                    "Market timing optimization",
+                    "Referral generation +60%"
+                ],
+                fitness: [
+                    "Member retention +35%",
+                    "Churn prediction accuracy 85%",
+                    "Upsell conversion +50%",
+                    "Community engagement +70%"
+                ],
+                education: [
+                    "Course completion +60%",
+                    "Student engagement +45%",
+                    "Admin tijd besparing 20u/week",
+                    "Dropout prevention 70%"
+                ],
+                automotive: [
+                    "Service retention +50%",
+                    "Maintenance reminder automation",
+                    "Trade-in conversion +30%",
+                    "Customer satisfaction +40%"
+                ],
+                finance: [
+                    "Onboarding completion +80%",
+                    "Compliance efficiency +70%",
+                    "Cross-sell conversion +25%",
+                    "Client retention +45%"
+                ],
+                beauty: [
+                    "Repeat bookings +60%",
+                    "No-show reduction 80%",
+                    "Product sales +40%",
+                    "Client satisfaction +50%"
+                ],
+                legal: [
+                    "Billable time +30%",
+                    "Admin overhead -50%",
+                    "Client satisfaction +60%",
+                    "Case efficiency +40%"
+                ],
+                saas: [
+                    "Trial conversion +45%",
+                    "Churn reduction 40%",
+                    "Feature adoption +60%",
+                    "Expansion revenue +50%"
+                ],
+                custom: [
+                    "Process automation opportunities",
+                    "Customer journey optimization",
+                    "Revenue stream enhancement", 
+                    "Operational efficiency gains"
+                ]
+            };
+            
+            return opportunities[industry] || opportunities.custom;
+        }
+
+        function scheduleCall(industry, complexity) {
+            // Close modal
+            document.getElementById('analysisModal').style.display = 'none';
+            
+            // Redirect to call booking form
+            window.location.href = `mailto:info@aicolllabs.nl?subject=Strategiegesprek aanvragen - ${industry} (${complexity}% complexiteit)&body=Hallo,%0A%0AIk wil graag een strategiegesprek inplannen.%0A%0AIndustrie: ${industry}%0AComplexiteit score: ${complexity}%%0AGeschatte implementatie uitdagingen: ${complexity >= 80 ? 'Hoog' : 'Medium'}%0A%0AWanneer kunnen we bellen?`;
+        }
+
+        function continueWithTemplate(industry) {
+            // Close modal
+            document.getElementById('analysisModal').style.display = 'none';
+            
+            // Continue with normal flow
+            setTimeout(() => {
+                showSolution(industry);
+            }, 300);
+        }
+
+        function showSolution(industry) {
+            const template = templates[industry];
+            if (!template) return;
+            
+            // Hide industry selection, show solution
+            document.getElementById('industrySelector').style.display = 'none';
+            document.getElementById('selectedIndustryDisplay').style.display = 'block';
+            
+            // Populate solution data
+            const showcase = document.getElementById('templateShowcase');
+            showcase.innerHTML = `
+                <div class="showcase-header">
+                    <span class="showcase-icon">${getIndustryIcon(industry)}</span>
+                    <h2 class="showcase-title">${template.title}</h2>
+                    <p class="showcase-subtitle">${template.subtitle}</p>
+                </div>
+
+                <div class="business-model-section">
+                    <h3>📊 BUSINESS MODEL OPTIMIZATION</h3>
+                    <div class="model-comparison">
+                        <div class="model-item model-current">
+                            <h4>❌ HUIDIGE SITUATIE:</h4>
+                            <span>${template.businessModel.current}</span>
+                        </div>
+                        <div class="model-item model-optimized">
+                            <h4>✅ MET AI OPTIMALISATIE:</h4>
+                            <span>${template.businessModel.optimized}</span>
+                        </div>
+                    </div>
+                    <div class="order-to-cash">
+                        ${template.orderToCash}
+                    </div>
+                </div>
+
+                <div class="template-details">
+                    <div class="problem-section">
+                        <h3 class="section-title">😰 NU DOE JE DIT HANDMATIG:</h3>
+                        <ul class="feature-list">
+                            ${template.problems.map(problem => `<li>${problem}</li>`).join('')}
+                        </ul>
+                    </div>
+                    
+                    <div class="solution-section">
+                        <h3 class="section-title">🤖 AI DOET DIT AUTOMATISCH:</h3>
+                        <ul class="feature-list">
+                            ${template.solutions.map(solution => `<li>${solution}</li>`).join('')}
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roi-highlight">
+                    ${template.roi}
+                </div>
+
+                <div style="background: rgba(55, 71, 79, 0.05); padding: 30px; border-radius: 16px; margin: 30px 0; border-left: 6px solid var(--accent-steel);">
+                    <h4 style="color: var(--primary-blue); margin-bottom: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em;">⚡ IMPLEMENTATIE DETAILS</h4>
+                    <ul style="list-style: none; margin: 0;">
+                        ${template.included.map(item => `<li style="padding: 8px 0; border-bottom: 1px solid var(--border-light); font-weight: 500;">${item}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+
+            window.scrollTo(0, 0);
+        }
+
+        function handleCustomIndustry() {
+            const input = document.getElementById('customIndustryInput').value.trim();
+            if (!input) {
+                alert('Vul eerst in wat je doet!');
+                return;
+            }
+            
+            // For custom industry, show a generic AI solution
+            showCustomSolution(input);
+        }
+
+        function showCustomSolution(businessType) {
+            // Hide industry selection, show custom solution
+            document.getElementById('industrySelector').style.display = 'none';
+            document.getElementById('selectedIndustryDisplay').style.display = 'block';
+            
+            // Custom AI solution
+            const showcase = document.getElementById('templateShowcase');
+            showcase.innerHTML = `
+                <div class="showcase-header">
+                    <span class="showcase-icon">🤖</span>
+                    <h2 class="showcase-title">AI AGENT VOOR "${businessType.toUpperCase()}"</h2>
+                    <p class="showcase-subtitle">Custom Order-to-Cash optimization voor jouw specifieke business model</p>
+                </div>
+
+                <div class="business-model-section">
+                    <h3>📊 JOUW BUSINESS MODEL ANALYSE</h3>
+                    <div class="order-to-cash">
+                        <strong>🎯 BUSINESS TYPE:</strong> "${businessType}"<br><br>
+                        <strong>🔍 ONZE AANPAK:</strong> We analyseren jouw specifieke Order-to-Cash cyclus en identificeren waar AI de meeste impact heeft:
+                        <br>• Lead generation & qualification
+                        <br>• Customer onboarding & engagement  
+                        <br>• Transaction optimization
+                        <br>• Post-sale follow-up & retention
+                        <br>• Upsell & referral automation
+                    </div>
+                    <div style="margin-top: 20px; font-size: 0.9rem; color: var(--text-light); font-weight: 500;">
+                        💡 <strong>CUSTOM DEVELOPMENT:</strong> We bouwen een AI agent specifiek voor jouw business model, 
+                        gebaseerd op 30 jaar ervaring met verschillende Order-to-Cash processen.
+                    </div>
+                </div>
+
+                <div class="template-details">
+                    <div class="problem-section">
+                        <h3 class="section-title">😰 HUIDIGE SITUATIE:</h3>
+                        <ul class="feature-list">
+                            <li>❌ Handmatige follow-up van klanten/prospects kost veel tijd</li>
+                            <li>❌ Repetitieve taken in jouw Order-to-Cash cyclus</li>
+                            <li>❌ Inconsistente communicatie naar klanten in verschillende fases</li>
+                            <li>❌ Geen systematische customer lifetime value optimization</li>
+                            <li>❌ Gemiste kansen voor upselling en cross-selling</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="solution-section">
+                        <h3 class="section-title">🤖 AI OPLOSSING:</h3>
+                        <ul class="feature-list">
+                            <li>✅ Geautomatiseerde klant journey van lead tot loyal customer</li>
+                            <li>✅ Intelligente data verzameling en behavioral analytics</li>
+                            <li>✅ Personalized communicatie gebaseerd op customer stage</li>
+                            <li>✅ Predictive insights voor optimal timing van upsells</li>
+                            <li>✅ Customer lifetime value maximization automation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="roi-highlight">
+                    💰 CUSTOM ROI: GEMIDDELD 10-15 UUR/WEEK BESPARING + 25-40% REVENUE INCREASE = 300%+ ROI
+                </div>
+            `;
+            
+            selectedTemplate = 'custom';
+            window.scrollTo(0, 0);
+        }
+
+        function getIndustryIcon(industry) {
+            const icons = {
+                restaurant: '🍽️',
+                consultancy: '💼',
+                ecommerce: '🛒',
+                healthcare: '🏥',
+                realestate: '🏠',
+                fitness: '💪',
+                education: '🎓',
+                automotive: '🚗',
+                finance: '💰',
+                beauty: '💄',
+                legal: '⚖️',
+                saas: '💻'
+            };
+            return icons[industry] || '🤖';
+        }
+
+        function goBack() {
+            // Back to industry selection
+            document.getElementById('selectedIndustryDisplay').style.display = 'none';
+            document.getElementById('industrySelector').style.display = 'block';
+            
+            // Reset selections
+            document.querySelectorAll('.industry-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            window.scrollTo(0, 0);
+        }
+
+        function startImplementation() {
+            // Redirect to checkout
+            const templateName = selectedTemplate === 'custom' ? 
+                document.getElementById('customIndustryInput').value : 
+                templates[selectedTemplate]?.title || 'AI Agent Template';
+                
+            window.location.href = `mailto:info@aicolllabs.nl?subject=Template implementatie - ${templateName}&body=Ik wil direct starten met de implementatie van: ${templateName}%0A%0ATemplate: ${selectedTemplate}%0APrijs: €197/maand%0A%0AStuur mij de betaalinformatie en toegang.`;
+        }
+
+        function requestDemo() {
+            // Redirect to demo request
+            const templateName = selectedTemplate === 'custom' ? 
+                document.getElementById('customIndustryInput').value : 
+                templates[selectedTemplate]?.title || 'AI Agent Template';
+                
+            window.location.href = `mailto:info@aicolllabs.nl?subject=Demo aanvraag - ${templateName}&body=Ik wil graag een demo van: ${templateName}%0A%0ATemplate: ${selectedTemplate}%0A%0AWanneer kunnen we een demo inplannen?`;
+        }
+
+        function closeModal() {
+            document.getElementById('analysisModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('analysisModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>px;">
+                    <div style="margin: 30px 0;">
+                        <div class="thinking-hexagons" style="display: flex; justify-content: center; gap: 20px; margin-bottom: 30px;">
+                            <div class="hex hex1"></div>
+                            <div class="hex hex2"></div>
+                            <div class="hex hex3"></div>
+                        </div>
+                        
+                        <div id="analysisStep" style="color: var(--accent-steel); font-size: 1.2rem; margin-bottom: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.02em;">
+                            ANALYSEREN VAN ${industry.toUpperCase()} BUSINESS MODEL...
+                        </div>
+                        
+                        <div style="background: var(--border-light); border-radius: 10px; height: 8px; overflow: hidden; margin: 20px 0;">
+                            <div id="progressBar" style="background: var(--gradient-blue); height: 100%; width: 0%; transition: width 0.5s;"></div>
+                        </div>
+                        
+                        <div id="percentage" style="font-size: 2.5rem; font-weight: 800; color: var(--primary-blue); margin-top: 20px;">
+                            0%
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Run analysis simulation
+            simulateAnalysis(industry, analysisModal);
+        }
+
+        function simulateAnalysis(industry, modal) {
+            const steps = [
+                "SCANNING REVENUE MODEL PATTERNS...",
+                "ANALYZING CUSTOMER TOUCHPOINTS...", 
+                "DETECTING PROCESS BOTTLENECKS...",
+                "CALCULATING ROI OPPORTUNITIES...",
+                "CROSS-REFERENCING INDUSTRY BENCHMARKS...",
+                "GENERATING OPTIMIZATION RECOMMENDATIONS..."
+            ];
+            
+            let currentStep = 0;
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 20 + 10;
+                if (progress > 100) progress = 100;
+                
+                modal.querySelector('#progressBar').style.width = progress + '%';
+                modal.querySelector('#percentage').textContent = Math.floor(progress) + '%';
+                
+                if (currentStep < steps.length) {
+                    modal.querySelector('#analysisStep').textContent = steps[currentStep];
+                    currentStep++;
+                }
+                
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        showAnalysisResult(industry, modal);
+                    }, 1000);
+                }
+            }, 800);
+        }
+
+        function showAnalysisResult(industry, modal) {
+            // Generate complexity score based on industry
+            const complexityScores = {
+                restaurant: 65,     // Medium complexity
+                consultancy: 89,    // High complexity
+                ecommerce: 71,      // Medium-high
+                healthcare: 92,     // Very high
+                realestate: 85,     // High
+                fitness: 68,        // Medium
+                education: 75,      // Medium-high
+                automotive: 78,     // Medium-high
+                finance: 95,        // Very high
+                beauty: 62,         // Medium
+                legal: 88,          // High
+                saas: 82,           // High
+                custom: 88          // High by default
+            };
+            
+            const complexityScore = complexityScores[industry] || 75;
+            const needsCall = complexityScore >= 80;
+            
+            const modalBody = document.getElementById('modalBody');
+            modalBody.innerHTML = `
+                <div style="text-align: center; padding: 40<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI CollLabs - Industry Templates | Directe Implementatie</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
+        
+        :root {
+            --primary-blue: #1a237e;
+            --secondary-blue: #283593;
+            --accent-steel: #37474f;
+            --bg-light: #fafbfc;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #64748b;
+            --gradient-blue: linear-gradient(135deg, #1a237e, #283593);
+            --gradient-steel: linear-gradient(135deg, #37474f, #455a64);
+            --border-light: #e2e8f0;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            line-height: 1.5; 
+            color: var(--text-dark);
+            background: var(--bg-light);
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header - Krachtig en strak */
+        .header {
+            background: var(--gradient-blue);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(55, 71, 79, 0.1) 0%, transparent 100%);
+        }
+        
+        .header-content { position: relative; z-index: 1; }
+        
+        .badge {
+            background: rgba(55, 71, 79, 0.3);
+            padding: 12px 24px;
+            border-radius: 30px;
+            display: inline-block;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            margin-bottom: 25px;
+            color: var(--white);
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.85;
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+        
+        /* Business Model Expertise Banner */
+        .expertise-banner {
+            background: rgba(55, 71, 79, 0.2);
+            border-radius: 16px;
+            padding: 25px;
+            margin: 40px auto;
+            max-width: 900px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .expertise-banner h3 {
+            margin: 0 0 20px 0;
+            color: var(--white);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .expertise-item {
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        .expertise-item strong {
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Industry Selector */
+        .industry-selector {
+            padding: 100px 0;
+            background: var(--white);
+        }
+        
+        .selector-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .selector-header h2 {
+            font-size: 3.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+        
+        .selector-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-steel);
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+        
+        /* AI Analysis Section */
+        .analysis-section {
+            background: rgba(55, 71, 79, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 50px 0;
+            border-left: 6px solid var(--accent-steel);
+        }
+        
+        .analysis-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            margin-bottom: 25px;
+        }
+        
+        .analysis-content h3 {
+            color: var(--primary-blue);
+            margin: 0 0 15px 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            font-size: 1.3rem;
+        }
+        
+        .analysis-content p {
+            color: var(--accent-steel);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+        
+        /* Thinking Animation */
+        .thinking-hexagons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .hex {
+            width: 35px;
+            height: 35px;
+            clip-path: polygon(30% 0%, 70% 0%, 100% 50%, 70% 100%, 30% 100%, 0% 50%);
+        }
+        
+        .hex1 { background: var(--primary-blue); animation: spin1 1.5s infinite linear; }
+        .hex2 { background: var(--secondary-blue); animation: spin2 1.5s infinite linear 0.2s; }
+        .hex3 { background: var(--accent-steel); animation: spin3 1.5s infinite linear 0.4s; }
+        
+        /* Analysis Preview */
+        .analysis-preview {
+            background: rgba(26, 35, 126, 0.05);
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 25px;
+        }
+        
+        .preview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .preview-item {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .preview-cta {
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            font-size: 1rem;
+        }
+        
+        /* Industry Grid */
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        /* Industry Cards */
+        .industry-card {
+            background: var(--white);
+            border: 2px solid var(--border-light);
+            border-radius: 16px;
+            padding: 40px 30px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .industry-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-blue);
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+        }
+        
+        .industry-card:hover {
+            border-color: var(--primary-blue);
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(26, 35, 126, 0.15);
+        }
+        
+        .industry-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .industry-card.selected {
+            border-color: var(--primary-blue);
+            background: linear-gradient(135deg, #f8faff 0%, #f1f5f9 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(26, 35, 126, 0.2);
+        }
+        
+        .industry-card.selected::before {
+            transform: scaleX(1);
+        }
+        
+        .industry-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            display: block;
+            filter: grayscale(0.4);
+            transition: filter 0.2s ease;
+        }
+        
+        .industry-card:hover .industry-icon,
+        .industry-card.selected .industry-icon {
+            filter: grayscale(0);
+        }
+        
+        .industry-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+        
+        .industry-description {
+            font-size: 1rem;
+            color: var(--accent-steel);
+            margin-bottom: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .use-cases {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: normal;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* Custom Industry Section */
+        .custom-industry {
+            background: rgba(55, 71, 79, 0.05);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 50px 0;
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+        
+        .custom-industry h3 {
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        .custom-industry p {
+            color: var(--accent-steel);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .custom-input {
+            display: flex;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .custom-input input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.2s;
+            font-weight: 500;
+        }
+        
+        .custom-input input:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+        }
+        
+        .custom-input button {
+            padding: 15px 30px;
+            background: var(--gradient-blue);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);
+        }
+        
+        .custom-input button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 35, 126, 0.4);
+        }
+        
+        /* Selected Industry Display */
+        .selected-industry-display {
+            display: none;
+            background: var(--white);
+            padding: 100px 0;
+        }
+        
+        .template-showcase {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 50px;
+            border: 3px solid var(--primary-blue);
+        }
+        
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .showcase-icon {
+            font-size: 5rem;
+            margin-bottom: 25px;
+            display: block;
+        }
+        
+        .showcase-title {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+        
+        .showcase-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-steel);
+            font-weight: 500;
+        }
+        
+        /* Business Model Section */
+        .business-model-section {
+            background: rgba(55, 71, 79, 0.05);
+            padding: 40px;
+            border-radius: 16px;
+            margin: 40px 0;
+            border-left: 6px solid var(--accent-steel);
+        }
+        
+        .business-model-section h3 {
+            color: var(--primary-blue);
+            margin-bottom: 25px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            font-size: 1.4rem;
+        }
+        
+        .model-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 25px;
+        }
+        
+        .model-item h4 {
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        .model-current h4 { color: #dc2626; }
+        .model-optimized h4 { color: #059669; }
+        
+        .model-item span {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .order-to-cash {
+            background: var(--primary-blue);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+        
+        /* Template Details */
+        .template-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        
+        .problem-section, .solution-section {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .problem-section {
+            border-left: 6px solid #dc2626;
+        }
+        
+        .solution-section {
+            border-left: 6px solid #059669;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        .problem-section .section-title { color: #dc2626; }
+        .solution-section .section-title { color: #059669; }
+        
+        .feature-list {
+            list-style: none;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-light);
+            font-weight: 500;
+            line-height: 1.5;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        /* ROI Highlight */
+        .roi-highlight {
+            background: var(--gradient-steel);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin: 40px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            margin: 10px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            box-shadow: 0 6px 16px rgba(26, 35, 126, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.4);
+        }
+        
+        .btn-secondary {
+            background: var(--gradient-steel);
+            color: white;
+            padding: 18px 35px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            box-shadow: 0 4px 12px rgba(55, 71, 79, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(55, 71, 79, 0.4);
+        }
+        
+        .back-button {
+            background: var(--text-light);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 40px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Trust Indicators */
+        .trust-indicators {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.8;
+            text-align: center;
+        }
+        
+        .trust-indicators strong {
+            color: var(--accent-steel);
+            font-weight: 600;
+        }
+        
+        /* Animations */
+        @keyframes spin1 {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        @keyframes spin2 {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        @keyframes spin3 {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.15); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); }
+        }
+        
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            border-radius: 20px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+        
+        .modal-header {
+            background: var(--gradient-blue);
+            color: var(--white);
+            padding: 40px;
+            border-radius: 20px 20px 0 0;
+            text-align: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        .modal-body {
+            padding: 40px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .selector-header h2 { font-size: 2.2rem; }
+            .industry-grid { grid-template-columns: 1fr; }
+            .template-details { grid-template-columns: 1fr; }
+            .model-comparison { grid-template-columns: 1fr; }
+            .custom-input { flex-direction: column; }
+            .cta-section .btn-primary, .cta-section .btn-secondary { 
+                display: block; 
+                width: 100%; 
+                margin: 10px 0; 
+            }
+            .analysis-header { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="badge">⚡ 30 JAAR ORDER-TO-CASH EXPERTISE IN AI VORM</div>
+                <h1>Welke Industrie Ben Jij?</h1>
+                <p>Selecteer jouw sector om direct te zien welke AI agent jouw team 15+ uur per week bespaart</p>
+                
+                <!-- Business Model Expertise Banner -->
+                <div class="expertise-banner">
+                    <h3>🧠 Waarom Onze AI Agents Écht Werken:</h3>
+                    <div class="expertise-grid">
+                        <div class="expertise-item">💼 <strong>B2B Sales Cycles</strong><br>Van prospect tot contract</div>
+                        <div class="expertise-item">🛒 <strong>E-commerce Funnels</strong><br>Browse → Buy → Loyalty</div>
+                        <div class="expertise-item">🔄 <strong>Subscription Models</strong><br>Acquire → Retain → Expand</div>
+                        <div class="expertise-item">🎯 <strong>Service Business</strong><br>Lead → Deliver → Upsell</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Industry Selector -->
+    <section class="industry-selector" id="industrySelector">
+        <div class="container">
+            <div class="selector-header">
+                <h2>👆 Klik Op Jouw Industrie</h2>
+                <p class="selector-subtitle">Zie direct hoe AI jouw specifieke problemen oplost</p>
+            </div>
+            
+            <!-- AI Analysis Section -->
+            <div class="analysis-section">
+                <div class="analysis-header">
+                    <div class="analysis-content">
+                        <h3>⚡ AI Analyse Gestart</h3>
+                        <p>30 jaar business expertise + real-time markt data wordt verwerkt. <strong>Resultaat: exacte ROI berekening voor jouw sector.</strong></p>
+                    </div>
+                    
+                    <div class="thinking-hexagons">
+                        <div class="hex hex1"></div>
+                        <div class="hex hex2"></div>
+                        <div class="hex hex3"></div>
+                    </div>
+                </div>
+                
+                <div class="analysis-preview">
+                    <div class="preview-grid">
+                        <div class="preview-item">📊 REVENUE MODEL</div>
+                        <div class="preview-item">👥 TOUCHPOINT SCAN</div>
+                        <div class="preview-item">🔄 BOTTLENECK DETECT</div>
+                        <div class="preview-item">💰 ROI CALCULATION</div>
+                    </div>
+                    <div class="preview-cta">⬇️ SELECTEER HIERONDER VOOR ANALYSE START</div>
+                </div>
+            </div>
+            
+            <div class="industry-grid">
+                <div class="industry-card" onclick="selectIndustry('restaurant')">
+                    <span class="industry-icon">🍽️</span>
+                    <h3>Restaurant / Horeca</h3>
+                    <p class="industry-description">Cafés, restaurants, hotels, catering</p>
+                    <p class="use-cases">After-sales, reviews, loyalty, reserveringen</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('consultancy')">
+                    <span class="industry-icon">💼</span>
+                    <h3>Consultancy / Advies</h3>
+                    <p class="industry-description">Business consultants, IT-advies, coaching</p>
+                    <p class="use-cases">Lead kwalificatie, afspraken, ROI berekeningen</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('ecommerce')">
+                    <span class="industry-icon">🛒</span>
+                    <h3>E-commerce / Retail</h3>
+                    <p class="industry-description">Webshops, retail stores, fashion, electronics</p>
+                    <p class="use-cases">Abandoned cart, upselling, customer service</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('healthcare')">
+                    <span class="industry-icon">🏥</span>
+                    <h3>Healthcare / Zorg</h3>
+                    <p class="industry-description">Klinieken, tandartsen, fysio, wellness</p>
+                    <p class="use-cases">Afspraken, herinneringen, patient follow-up</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('realestate')">
+                    <span class="industry-icon">🏠</span>
+                    <h3>Real Estate / Makelaardij</h3>
+                    <p class="industry-description">Makelaars, vastgoed, verhuur, bouw</p>
+                    <p class="use-cases">Bezichtiging follow-up, markt updates, leads</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('fitness')">
+                    <span class="industry-icon">💪</span>
+                    <h3>Fitness / Sport</h3>
+                    <p class="industry-description">Sportscholen, personal trainers, yoga</p>
+                    <p class="use-cases">Member retention, class booking, motivation</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('education')">
+                    <span class="industry-icon">🎓</span>
+                    <h3>Onderwijs / Training</h3>
+                    <p class="industry-description">Scholen, trainingen, cursussen, e-learning</p>
+                    <p class="use-cases">Student engagement, progress tracking, support</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('automotive')">
+                    <span class="industry-icon">🚗</span>
+                    <h3>Automotive / Dealers</h3>
+                    <p class="industry-description">Auto dealers, garages, lease, onderhoud</p>
+                    <p class="use-cases">Service reminders, lead follow-up, upselling</p>
+                </div>
+                
+                <div class="industry-card" onclick="selectIndustry('finance')">
+                    <span class="industry-icon">💰</span>
+                    <h3>Finance / Insurance</h3>
+                    <p class="industry-description">
