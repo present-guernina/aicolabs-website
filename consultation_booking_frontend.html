@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan je Persoonlijke AI Consultatie - AI CollLabs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+        
+        :root {
+            --primary-blue: #1a237e;
+            --secondary-blue: #283593;
+            --accent-steel: #37474f;
+            --bg-light: #fafbfc;
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #64748b;
+            --gradient-blue: linear-gradient(135deg, #1a237e, #283593);
+            --gradient-steel: linear-gradient(135deg, #37474f, #455a64);
+            --border-light: #e2e8f0;
+            --success-green: #059669;
+            --warning-orange: #f59e0b;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+            line-height: 1.6; 
+            color: var(--text-dark);
+            background: var(--bg-light);
+        }
+        
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        
+        /* Header */
+        .booking-header {
+            background: var(--gradient-blue);
+            color: var(--white);
+            padding: 80px 0 60px 0;
+            text-align: center;
+        }
+        
+        .booking-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+        
+        .booking-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        .value-props {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .value-prop {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+        
+        .value-icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Main Layout */
+        .booking-layout {
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 40px;
+            margin-top: -30px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Booking Form */
+        .booking-form {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+        
+        .form-header {
+            margin-bottom: 30px;
+        }
+        
+        .form-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+        
+        .form-subtitle {
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        
+        .booking-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .booking-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            right: 15px;
+            height: 2px;
+            background: var(--border-light);
+            z-index: 1;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--border-light);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        
+        .step.active .step-circle,
+        .step.completed .step-circle {
+            background: var(--primary-blue);
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--text-light);
+            text-align: center;
+        }
+        
+        .step.active .step-label,
+        .step.completed .step-label {
+            color: var(--primary-blue);
+        }
+        
+        /* Form Sections */
+        .form-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .form-section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.95rem;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.2s;
+            font-weight: 500;
+            background: var(--white);
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+        }
+        
+        .form-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        /* Calendar Interface */
+        .calendar-container {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .calendar-nav {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        
+        .calendar-nav:hover {
+            background: var(--border-light);
+        }
+        
+        .calendar-month {
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        
+        .calendar-day.available:hover {
+            background: rgba(26, 35, 126, 0.1);
+        }
+        
+        .calendar-day.selected {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .calendar-day.unavailable {
+            color: var(--text-light);
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        
+        .calendar-day.today {
+            border-color: var(--primary-blue);
+            font-weight: 700;
+        }
+        
+        .weekday-header {
+            text-align: center;
+            font-weight: 600;
+            color: var(--text-light);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 8px 0;
+        }
+        
+        /* Time Slots */
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .time-slot {
+            padding: 12px 8px;
+            border: 2px solid var(--border-light);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .time-slot:hover {
+            border-color: var(--primary-blue);
+            background: rgba(26, 35, 126, 0.05);
+        }
+        
+        .time-slot.selected {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .time-slot.unavailable {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: var(--bg-light);
+        }
+        
+        /* Navigation Buttons */
+        .form-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            gap: 15px;
+        }
+        
+        .btn {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+        
+        .btn-primary {
+            background: var(--gradient-blue);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(26, 35, 126, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 35, 126, 0.4);
+        }
+        
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--border-light);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        /* Sidebar */
+        .booking-sidebar {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .consultation-package {
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .package-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .package-name {
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        .package-price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+        
+        .package-features {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+        
+        .package-features li {
+            padding: 4px 0;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .package-features li::before {
+            content: '✓';
+            color: var(--success-green);
+            font-weight: 600;
+        }
+        
+        .booking-summary {
+            background: rgba(26, 35, 126, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .summary-row.total {
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            border-top: 1px solid var(--border-light);
+            padding-top: 8px;
+            margin-top: 15px;
+        }
+        
+        .guarantee-badge {
+            background: var(--gradient-steel);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Success State */
+        .booking-success {
+            text-align: center;
+            padding: 60px 40px;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: var(--success-green);
+            margin-bottom: 20px;
+        }
+        
+        .success-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+        }
+        
+        .success-message {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .appointment-details {
+            background: var(--bg-light);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .next-steps {
+            background: var(--gradient-blue);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        
+        .next-steps h4 {
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .next-steps ul {
+            list-style: none;
+        }
+        
+        .next-steps li {
+            padding: 5px 0;
+            opacity: 0.9;
+        }
+        
+        .next-steps li::before {
+            content: '→ ';
+            margin-right: 8px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .booking-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .booking-sidebar {
+                order: -1;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .value-props {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .booking-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="booking-header">
+        <div class="container">
+            <h1>Plan Je Persoonlijke AI Consultatie</h1>
+            <p>Kom persoonlijk langs om jouw processen te analyseren en een maatwerk AI implementatie plan te maken</p>
+            
+            <div class="value-props">
+                <div class="value-prop">
+                    <span class="value-icon">🏢</span>
+                    <span>Persoonlijk bezoek op locatie</span>
+                </div>
+                <div class="value-prop">
+                    <span class="value-icon">📊</span>
+                    <span>Volledige proces analyse</span>
+                </div>
+                <div class="value-prop">
+                    <span class="value-icon">🎯</span>
+                    <span>Maatwerk implementatie plan</span>
+                </div>
+                <div class="value-prop">
+                    <span class="value-icon">💰</span>
+                    <span>ROI garantie</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="booking-layout">
+            <!-- Booking Form -->
+            <div class="booking-form">
+                <div class="form-header">
+                    <h2 class="form-title">Plan je consultatie in 3 stappen</h2>
+                    <p class="form-subtitle">We plannen een 2-3 uur durend bezoek op jouw locatie</p>
+                </div>
+                
+                <!-- Progress Steps -->
+                <div class="booking-steps">
+                    <div class="step active">
+                        <div class="step-circle">1</div>
+                        <div class="step-label">Gegevens</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-circle">2</div>
+                        <div class="step-label">Datum & Tijd</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-circle">3</div>
+                        <div class="step-label">Bevestiging</div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Contact Info -->
+                <div class="form-section active" data-step="1">
+                    <h3 class="section-title">Jouw gegevens en situatie</h3>
+                    <p class="section-subtitle">Zodat we de consultatie optimaal kunnen voorbereiden</p>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">Voornaam *</label>
+                            <input type="text" id="firstName" required placeholder="Jan">
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Achternaam *</label>
+                            <input type="text" id="lastName" required placeholder="van der Berg">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email adres *</label>
+                        <input type="email" id="email" required placeholder="jan@bedrijf.nl">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Telefoon *</label>
+                        <input type="tel" id="phone" required placeholder="+31 6 12345678">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Bedrijfsnaam *</label>
+                        <input type="text" id="company" required placeholder="Bakkerij van der Berg">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="industry">Sector</label>
+                            <select id="industry">
+                                <option value="">Selecteer...</option>
+                                <option value="restaurant">Restaurant/Horeca</option>
+                                <option value="retail">Retail/Winkel</option>
+                                <option value="services">Dienstverlening</option>
+                                <option value="healthcare">Zorg/Wellness</option>
+                                <option value="consultancy">Consultancy</option>
+                                <option value="other">Anders</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="teamSize">Team grootte</label>
+                            <select id="teamSize">
+                                <option value="">Selecteer...</option>
+                                <option value="1">Alleen ikzelf</option>
+                                <option value="2-5">2-5 medewerkers</option>
+                                <option value="6-15">6-15 medewerkers</option>
+                                <option value="16+">16+ medewerkers</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Bedrijfsadres (voor bezoek) *</label>
+                        <textarea id="address" required placeholder="Straat, nummer, postcode, plaats"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="challenges">Wat zijn je grootste uitdagingen momenteel?</label>
+                        <textarea id="challenges" placeholder="Bijv: Te veel handmatige administratie, klanten die lang moeten wachten op antwoorden, geen tijd voor groei..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Step 2: Date & Time -->
+                <div class="form-section" data-step="2">
+                    <h3 class="section-title">Kies datum en tijd</h3>
+                    <p class="section-subtitle">Selecteer een moment dat uitkomt voor een 2-3 uur durend bezoek</p>
+                    
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button class="calendar-nav" onclick="previousMonth()">‹</button>
+                            <div class="calendar-month" id="currentMonth">December 2024</div>
+                            <button class="calendar-nav" onclick="nextMonth()">›</button>
+                        </div>
+                        
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div id="timeSlots" style="display: none;">
+                        <h4 style="margin-bottom: 15px; color: var(--primary-blue); font-weight: 600;">Beschikbare tijden</h4>
+                        <div class="time-slots" id="timeSlotsContainer">
+                            <!-- Time slots will be generated by JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="preferredContact">Voorkeur voor voorafgaand contact</label>
+                        <select id="preferredContact">
+                            <option value="phone">Telefonisch gesprek (15 min)</option>
+                            <option value="email">Email voorbereiding</option>
+                            <option value="none">Direct naar consultatie</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Step 3: Confirmation -->
+                <div class="form-section" data-step="3">
+                    <h3 class="section-title">Bevestig je afspraak</h3>
+                    <p class="section-subtitle">Controleer de details en bevestig je consultatie</p>
+                    
+                    <div class="appointment-details">
+                        <div class="detail-row">
+                            <span>Datum:</span>
+                            <span id="selectedDate">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Tijd:</span>
+                            <span id="selectedTime">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Locatie:</span>
+                            <span id="selectedLocation">Jouw bedrijfslocatie</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Duur:</span>
+                            <span>2-3 uur</span>
+                        </div>
+                        <div class="detail-row">
+                            <span>Consultant:</span>
+                            <span>Expert AI specialist</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="specialRequests">Bijzondere wensen of opmerkingen</label>
+                        <textarea id="specialRequests" placeholder="Bijv: Graag focus op klantenservice automatisering, team is aanwezig voor demo..."></textarea>
+                    </div>
+                    
+                    <div style="background: rgba(26, 35, 126, 0.05); padding: 20px; border-radius: 8px; margin: 20px 0;">
+                        <h4 style="color: var(--primary-blue); margin-bottom: 10px;">Wat gebeurt er na bevestiging?</h4>
+                        <ul style="color: var(--text-dark); margin-left: 20px;">
+                            <li>Je ontvangt direct een bevestigingsmail</li>
+                            <li>24 uur voor de afspraak bellen we ter bevestiging</li>
+                            <li>We sturen voorbereidende vragen toe</li>
+                            <li>Op de dag zelf komt onze specialist naar je toe</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Success State -->
+                <div class="form-section" data-step="success" style="display: none;">
+                    <div class="booking-success">
+                        <div class="success-icon">✅</div>
+                        <h2 class="success-title">Afspraak Bevestigd!</h2>
+                        <p class="success-message">
+                            Bedankt voor het plannen van je AI consultatie. We kijken er naar uit om je te helpen 
+                            bij het vrijspelen van je team voor wat écht belangrijk is.
+                        </p>
+                        
+                        <div class="appointment-details">
+                            <div class="detail-row">
+                                <span>Afspraak:</span>
+                                <span id="confirmedDateTime">Vrijdag 15 december 2024, 14:00</span>
+                            </div>
+                            <div class="detail-row">
+                                <span>Referentie:</span>
+                                <span id="bookingReference">AI-CONS-2024-001</span>
+                            </div>
+                        </div>
+                        
+                        <div class="next-steps">
+                            <h4>Wat gebeurt er nu?</h4>
+                            <ul>
+                                <li>Bevestigingsmail wordt verstuurd</li>
+                                <li>Voorbereidende vragenlijst volgt</li>
+                                <li>24u voor afspraak: bevestigingsgesprek</li>
+                                <li>Consultant komt naar je locatie</li>
+                                <li>Na consultatie: implementatie roadmap</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation -->
+                <div class="form-navigation">
+                    <button type="button" class="btn btn-secondary" id="prevBtn" onclick="previousStep()" style="display: none;">Vorige</button>
+                    <div></div>
+                    <button type="button" class="btn btn-primary" id="nextBtn" onclick="nextStep()" disabled>Volgende</button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="booking-sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Wat je krijgt</h3>
+                    
+                    <div class="consultation-package">
+                        <div class="package-header">
+                            <div class="package-name">Maatwerk Consultatie</div>
+                            <div class="package-price">€2.395</div>
+                        </div>
+                        
+                        <ul class="package-features">
+                            <li>Persoonlijk bezoek (2-3 uur)</li>
+                            <li>Volledige proces analyse</li>
+                            <li>Custom AI implementatie roadmap</li>
+                            <li>ROI berekening met business case</li>
+                            <li>Hands-on implementatie begeleiding</li>
+                            <li>3 maanden nazorg support</li>
+                            <li>Toegang tot DIY platform inclusief</li>
+                        </ul>
+                        
+                        <div style="margin-top: 15px; padding: 12px; background: rgba(245, 158, 11, 0.1); border-radius: 8px;">
+                            <h5 style="color: var(--warning-orange); font-size: 0.9rem; margin-bottom: 8px;">Optionele Training</h5>
+                            <p style="font-size: 0.8rem; color: var(--text-light); line-height: 1.4;">
+                                Na implementatie kunnen we team training aanbieden. 
+                                Prijs afhankelijk van grootte en complexiteit.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Booking Overzicht</h3>
+                    
+                    <div class="booking-summary">
+                        <div class="summary-row">
+                            <span>Consultatie bezoek</span>
+                            <span>€2.395</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>BTW (21%)</span>
+                            <span>€502,95</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Totaal</span>
+                            <span>€2.897,95</span>
+                        </div>
+                    </div>
+                    
+                    <div style="font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px;">
+                        Betaling na consultatie. Niet tevreden? Geld terug.
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <div class="guarantee-badge">
+                        <strong>200% ROI Garantie</strong><br>
+                        Of je geld terug binnen 90 dagen
+                    </div>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Veelgestelde Vragen</h3>
+                    
+                    <div style="space-y: 15px;">
+                        <details style="margin-bottom: 15px;">
+                            <summary style="font-weight: 600; cursor: pointer; margin-bottom: 8px;">Wat als ik niet tevreden ben?</summary>
+                            <p style="color: var(--text-light); font-size: 0.9rem; line-height: 1.5;">
+                                Je betaalt pas na de consultatie. Als je niet tevreden bent, 
+                                betaal je niets. We garanderen dat je minimaal 200% ROI behaalt binnen 90 dagen.
+                            </p>
+                        </details>
+                        
+                        <details style="margin-bottom: 15px;">
+                            <summary style="font-weight: 600; cursor: pointer; margin-bottom: 8px;">Hoe lang duurt implementatie?</summary>
+                            <p style="color: var(--text-light); font-size: 0.9rem; line-height: 1.5;">
+                                Afhankelijk van complexiteit 2-6 weken. Simpele automatiseringen 
+                                kunnen binnen 1 week live zijn.
+                            </p>
+                        </details>
+                        
+                        <details style="margin-bottom: 15px;">
+                            <summary style="font-weight: 600; cursor: pointer; margin-bottom: 8px;">Wat kost team training?</summary>
+                            <p style="color: var(--text-light); font-size: 0.9rem; line-height: 1.5;">
+                                Training wordt maatwerk aangeboden na implementatie. Prijs hangt af van 
+                                teamgrootte, complexiteit en gewenste diepgang. Vanaf €397 per sessie.
+                            </p>
+                        </details>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let selectedDate = null;
+        let selectedTime = null;
+        let formData = {};
+
+        // Calendar functionality
+        const months = [
+            'Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni',
+            'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'
+        ];
+        
+        const weekdays = ['Zo', 'Ma', 'Di', 'Wo', 'Do', 'Vr', 'Za'];
+        
+        let currentMonth = new Date().getMonth();
+        let currentYear = new Date().getFullYear();
+
+        function initializeCalendar() {
+            generateCalendar();
+        }
+
+        function generateCalendar() {
+            const calendar = document.getElementById('calendarGrid');
+            const monthDisplay = document.getElementById('currentMonth');
+            
+            monthDisplay.textContent = `${months[currentMonth]} ${currentYear}`;
+            
+            // Clear calendar
+            calendar.innerHTML = '';
+            
+            // Add weekday headers
+            weekdays.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.className = 'weekday-header';
+                dayHeader.textContent = day;
+                calendar.appendChild(dayHeader);
+            });
+            
+            // Get first day of month and number of days
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+            const today = new Date();
+            
+            // Add empty cells for days before month starts
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day';
+                calendar.appendChild(emptyDay);
+            }
+            
+            // Add days of month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                
+                const dayDate = new Date(currentYear, currentMonth, day);
+                
+                // Mark today
+                if (dayDate.toDateString() === today.toDateString()) {
+                    dayElement.classList.add('today');
+                }
+                
+                // Mark as available or unavailable
+                if (dayDate < today || dayDate.getDay() === 0) { // Past dates and Sundays unavailable
+                    dayElement.classList.add('unavailable');
+                } else {
+                    dayElement.classList.add('available');
+                    dayElement.addEventListener('click', () => selectDate(dayDate, dayElement));
+                }
+                
+                calendar.appendChild(dayElement);
+            }
+        }
+
+        function selectDate(date, element) {
+            // Remove previous selection
+            document.querySelectorAll('.calendar-day.selected').forEach(day => {
+                day.classList.remove('selected');
+            });
+            
+            // Add selection to clicked day
+            element.classList.add('selected');
+            selectedDate = date;
+            
+            // Show time slots
+            showTimeSlots(date);
+            
+            // Update form data
+            formData.selectedDate = date;
+            validateStep();
+        }
+
+        function showTimeSlots(date) {
+            const timeSlots = document.getElementById('timeSlots');
+            const container = document.getElementById('timeSlotsContainer');
+            
+            timeSlots.style.display = 'block';
+            container.innerHTML = '';
+            
+            // Generate time slots (9:00 - 17:00, excluding lunch 12:00-13:00)
+            const slots = [
+                '09:00', '09:30', '10:00', '10:30', '11:00', '11:30',
+                '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00'
+            ];
+            
+            slots.forEach(time => {
+                const slot = document.createElement('div');
+                slot.className = 'time-slot';
+                slot.textContent = time;
+                
+                // Random availability simulation
+                if (Math.random() > 0.3) {
+                    slot.classList.add('available');
+                    slot.addEventListener('click', () => selectTime(time, slot));
+                } else {
+                    slot.classList.add('unavailable');
+                }
+                
+                container.appendChild(slot);
+            });
+        }
+
+        function selectTime(time, element) {
+            // Remove previous selection
+            document.querySelectorAll('.time-slot.selected').forEach(slot => {
+                slot.classList.remove('selected');
+            });
+            
+            // Add selection
+            element.classList.add('selected');
+            selectedTime = time;
+            
+            // Update form data
+            formData.selectedTime = time;
+            validateStep();
+        }
+
+        function previousMonth() {
+            currentMonth--;
+            if (currentMonth < 0) {
+                currentMonth = 11;
+                currentYear--;
+            }
+            generateCalendar();
+        }
+
+        function nextMonth() {
+            currentMonth++;
+            if (currentMonth > 11) {
+                currentMonth = 0;
+                currentYear++;
+            }
+            generateCalendar();
+        }
+
+        // Form navigation
+        function nextStep() {
+            if (currentStep < 3) {
+                // Hide current step
+                document.querySelector(`.form-section[data-step="${currentStep}"]`).classList.remove('active');
+                document.querySelector(`.step:nth-child(${currentStep})`).classList.remove('active');
+                document.querySelector(`.step:nth-child(${currentStep})`).classList.add('completed');
+                
+                currentStep++;
+                
+                // Show next step
+                document.querySelector(`.form-section[data-step="${currentStep}"]`).classList.add('active');
+                document.querySelector(`.step:nth-child(${currentStep})`).classList.add('active');
+                
+                updateNavigation();
+                validateStep();
+                
+                // Initialize calendar on step 2
+                if (currentStep === 2) {
+                    initializeCalendar();
+                }
+                
+                // Update confirmation details on step 3
+                if (currentStep === 3) {
+                    updateConfirmationDetails();
+                }
+                
+                window.scrollTo(0, 0);
+            } else {
+                // Submit booking
+                submitBooking();
+            }
+        }
+
+        function previousStep() {
+            if (currentStep > 1) {
+                // Hide current step
+                document.querySelector(`.form-section[data-step="${currentStep}"]`).classList.remove('active');
+                document.querySelector(`.step:nth-child(${currentStep})`).classList.remove('active');
+                
+                currentStep--;
+                
+                // Show previous step
+                document.querySelector(`.form-section[data-step="${currentStep}"]`).classList.add('active');
+                document.querySelector(`.step:nth-child(${currentStep})`).classList.add('active');
+                document.querySelector(`.step:nth-child(${currentStep})`).classList.remove('completed');
+                
+                updateNavigation();
+                validateStep();
+                
+                window.scrollTo(0, 0);
+            }
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            
+            // Show/hide previous button
+            if (currentStep > 1) {
+                prevBtn.style.display = 'block';
+            } else {
+                prevBtn.style.display = 'none';
+            }
+            
+            // Update next button text
+            if (currentStep === 3) {
+                nextBtn.textContent = 'BEVESTIG AFSPRAAK';
+            } else {
+                nextBtn.textContent = 'Volgende';
+            }
+        }
+
+        function validateStep() {
+            const nextBtn = document.getElementById('nextBtn');
+            let isValid = false;
+            
+            switch(currentStep) {
+                case 1:
+                    isValid = formData.firstName && formData.lastName && formData.email && 
+                             formData.phone && formData.company && formData.address;
+                    break;
+                case 2:
+                    isValid = selectedDate && selectedTime;
+                    break;
+                case 3:
+                    isValid = true; // Always valid on confirmation step
+                    break;
+            }
+            
+            nextBtn.disabled = !isValid;
+        }
+
+        function updateConfirmationDetails() {
+            if (selectedDate && selectedTime) {
+                const dateStr = selectedDate.toLocaleDateString('nl-NL', { 
+                    weekday: 'long', 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                });
+                
+                document.getElementById('selectedDate').textContent = dateStr;
+                document.getElementById('selectedTime').textContent = selectedTime + ' - ' + 
+                    (parseInt(selectedTime.split(':')[0]) + 3) + ':' + selectedTime.split(':')[1];
+                document.getElementById('selectedLocation').textContent = formData.address || 'Jouw bedrijfslocatie';
+            }
+        }
+
+        function submitBooking() {
+            // Show success state
+            document.querySelector(`.form-section[data-step="${currentStep}"]`).style.display = 'none';
+            document.querySelector('.form-section[data-step="success"]').style.display = 'block';
+            document.querySelector('.booking-steps').style.display = 'none';
+            document.querySelector('.form-navigation').style.display = 'none';
+            
+            // Update success details
+            const dateTimeStr = selectedDate.toLocaleDateString('nl-NL', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            }) + ', ' + selectedTime;
+            
+            document.getElementById('confirmedDateTime').textContent = dateTimeStr;
+            document.getElementById('bookingReference').textContent = 'AI-CONS-' + 
+                new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 1000)).padStart(3, '0');
+            
+            // Simulate sending confirmation email
+            setTimeout(() => {
+                alert('Bevestigingsmail verstuurd naar ' + formData.email);
+            }, 1000);
+        }
+
+        // Form input handling
+        document.addEventListener('DOMContentLoaded', function() {
+            // Setup form validation
+            document.querySelectorAll('input, select, textarea').forEach(input => {
+                input.addEventListener('input', function() {
+                    formData[this.id] = this.value;
+                    validateStep();
+                });
+            });
+            
+            // Initialize first step validation
+            validateStep();
+            updateNavigation();
+        });
+
+        // Demo data function for testing
+        function fillDemoData() {
+            const demoData = {
+                firstName: 'Jan',
+                lastName: 'van der Berg',
+                email: 'jan@bakkerijvandenberg.nl',
+                phone: '+31 6 12345678',
+                company: 'Bakkerij van der Berg',
+                industry: 'restaurant',
+                teamSize: '2-5',
+                address: 'Hoofdstraat 123\n1234 AB Amsterdam',
+                challenges: 'We krijgen veel vragen over openingstijden en beschikbaarheid van producten. Mijn vrouw en ik besteden veel tijd aan deze simpele vragen.',
+                preferredContact: 'phone'
+            };
+            
+            Object.keys(demoData).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.value = demoData[key];
+                    formData[key] = demoData[key];
+                }
+            });
+            
+            validateStep();
+        }
+
+        // Add demo button for development
+        if (window.location.hostname === 'localhost' || window.location.hostname.includes('claude')) {
+            const demoBtn = document.createElement('button');
+            demoBtn.textContent = 'DEMO DATA';
+            demoBtn.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                z-index: 9999;
+                padding: 10px;
+                background: #ff4444;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            `;
+            demoBtn.onclick = fillDemoData;
+            document.body.appendChild(demoBtn);
+        }
+    </script>
+</body>
+</html>
